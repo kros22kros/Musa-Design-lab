@@ -1,0 +1,34 @@
+{
+  "name": "musa-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sitio web de MUSA — estudio creativo de comunicación y presencia digital.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "musa",
+    "estudio creativo",
+    "comunicación digital",
+    "vite",
+    "gsap"
+  ],
+  "author": "MUSA — Isabella Corredor, Emilia Macias, Elizabeth Román",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/jost": "^5.3.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.27",
+    "split-type": "^0.3.4"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

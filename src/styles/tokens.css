@@ -1,0 +1,38 @@
+/* ============================================================
+   MUSA — Design tokens
+   ============================================================ */
+:root {
+  /* Color */
+  --bone: #f4ede2;
+  --bone-2: #eee4d5;
+  --cream: #fbf7f0;
+  --ink: #17120f;
+  --ink-2: #241b16;
+  --wine: #3b1218;
+  --wine-deep: #1d0a0d;
+  --clay: #a8553a;
+  --clay-2: #c17b5b;
+  --gold: #b08a57;
+  --gold-light: #d8bd97;
+  --sage: #6c7868;
+  --muted: #78685b;
+  --muted-light: #b7a897;
+  --line: rgba(23, 18, 15, 0.14);
+  --line-strong: rgba(23, 18, 15, 0.28);
+  --line-light: rgba(244, 237, 226, 0.18);
+  --line-light-strong: rgba(244, 237, 226, 0.34);
+
+  /* Type */
+  --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --sans: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --pad: clamp(1.25rem, 4.4vw, 5.5rem);
+  --max: 1560px;
+  --header-h: 86px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0.05, 0, 1);
+  --dur: 0.7s;
+}

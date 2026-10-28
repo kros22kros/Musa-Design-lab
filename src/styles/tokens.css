@@ -2,25 +2,27 @@
    MUSA — Design tokens
    ============================================================ */
 :root {
-  /* Color */
-  --bone: #f4ede2;
-  --bone-2: #eee4d5;
-  --cream: #fbf7f0;
-  --ink: #17120f;
-  --ink-2: #241b16;
-  --wine: #3b1218;
-  --wine-deep: #1d0a0d;
-  --clay: #a04f34;
-  --clay-2: #c17b5b;
-  --gold: #b08a57;
-  --gold-light: #d8bd97;
-  --sage: #6c7868;
-  --muted: #6a5a4d;
-  --muted-light: #b7a897;
-  --line: rgba(23, 18, 15, 0.14);
-  --line-strong: rgba(23, 18, 15, 0.28);
-  --line-light: rgba(244, 237, 226, 0.18);
-  --line-light-strong: rgba(244, 237, 226, 0.34);
+  /* Color — paleta de marca MUSA Design Lab */
+  --bone: #ece9dc;
+  --bone-2: #e2dfd0;
+  --cream: #f7f5ec;
+  --ink: #0c0b0b;
+  --ink-2: #1a1817;
+  --wine: #80231e;
+  --wine-deep: #2b0d10;
+  --clay: #8a2a24;
+  --clay-2: #c08a84;
+  --blue: #67768d;
+  --blue-deep: #17253a;
+  --blue-light: #d3d9e7;
+  --sky: #8aa9c5;
+  --sage: #67768d;
+  --muted: #5f5b53;
+  --muted-light: #b8b5aa;
+  --line: rgba(12, 11, 11, 0.14);
+  --line-strong: rgba(12, 11, 11, 0.28);
+  --line-light: rgba(236, 233, 220, 0.18);
+  --line-light-strong: rgba(236, 233, 220, 0.34);
 
   /* Type */
   --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;

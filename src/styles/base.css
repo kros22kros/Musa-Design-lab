@@ -187,7 +187,7 @@ html.has-cursor [data-lightbox] {
   place-items: center;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(244, 237, 226, 0.7);
+  border: 1px solid rgba(236, 233, 220, 0.7);
   mix-blend-mode: difference;
   transition: width 0.35s var(--ease), height 0.35s var(--ease),
     background-color 0.35s var(--ease), border-color 0.35s var(--ease);
@@ -208,15 +208,15 @@ html.has-cursor [data-lightbox] {
 html.has-cursor .cursor.is-hover .cursor__ring {
   width: 64px;
   height: 64px;
-  background: rgba(244, 237, 226, 0.14);
-  border-color: rgba(244, 237, 226, 0.3);
+  background: rgba(236, 233, 220, 0.14);
+  border-color: rgba(236, 233, 220, 0.3);
 }
 
 html.has-cursor .cursor.is-label .cursor__ring {
   width: 88px;
   height: 88px;
-  background: var(--gold-light);
-  border-color: var(--gold-light);
+  background: var(--blue-light);
+  border-color: var(--blue-light);
   mix-blend-mode: normal;
 }
 
@@ -248,7 +248,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
 .preloader__mark {
   width: 34px;
   margin: 0 auto 1.6rem;
-  color: var(--gold);
+  color: var(--blue);
   animation: preloader-spin 9s linear infinite;
 }
 
@@ -258,12 +258,14 @@ html.has-cursor .cursor.is-label .cursor__dot {
 }
 
 .preloader__word {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  font-weight: 400;
-  letter-spacing: 0.32em;
+  display: flex;
+  justify-content: center;
   line-height: 1;
-  padding-left: 0.32em;
+}
+
+.preloader__word img {
+  height: clamp(84px, 10.5vw, 148px);
+  width: auto;
 }
 
 .preloader__meta {
@@ -289,7 +291,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
 .preloader__bar {
   height: 1px;
   margin-top: 1rem;
-  background: rgba(244, 237, 226, 0.16);
+  background: rgba(236, 233, 220, 0.16);
   overflow: hidden;
 }
 
@@ -297,7 +299,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
   display: block;
   height: 100%;
   width: 100%;
-  background: var(--gold-light);
+  background: var(--blue-light);
   transform: scaleX(0);
   transform-origin: left center;
 }
@@ -328,7 +330,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
 
 .section--dark .display em,
 .section--dark .display--light em {
-  color: var(--gold-light);
+  color: var(--blue-light);
 }
 
 .section__head {
@@ -391,7 +393,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
 }
 
 .label--light span {
-  color: var(--gold-light);
+  color: var(--blue-light);
 }
 
 .label--light::after {
@@ -490,13 +492,13 @@ html.has-cursor .cursor.is-label .cursor__dot {
 }
 
 .btn--ghost {
-  border-color: rgba(244, 237, 226, 0.35);
+  border-color: rgba(236, 233, 220, 0.35);
   color: var(--bone);
 }
 
 .btn--ghost:hover {
   border-color: var(--bone);
-  background: rgba(244, 237, 226, 0.08);
+  background: rgba(236, 233, 220, 0.08);
 }
 
 .btn--wide {
@@ -536,7 +538,7 @@ html.has-cursor .cursor.is-label .cursor__dot {
 
 .star {
   font-family: var(--sans);
-  color: var(--gold);
+  color: var(--blue);
 }
 
 /* ---------- Animaciones base (estados iniciales) ---------- */

@@ -38,16 +38,16 @@ SANS = str(FONTS / "Jost.ttf")
 # ----------------------------------------------------------------------------
 # Paleta
 # ----------------------------------------------------------------------------
-INK = (20, 16, 13)
-WINE_DEEP = (26, 10, 13)
-WINE = (59, 18, 24)
-CLAY = (168, 85, 58)
-CLAY_LIGHT = (196, 120, 92)
-GOLD = (176, 138, 87)
-GOLD_LIGHT = (214, 186, 146)
-IVORY = (243, 236, 225)
-CREAM = (250, 246, 239)
-SAGE = (108, 120, 104)
+INK = (12, 11, 11)
+WINE_DEEP = (26, 12, 15)
+WINE = (128, 35, 30)
+CLAY = (103, 118, 141)
+CLAY_LIGHT = (138, 169, 197)
+GOLD = (211, 217, 231)
+GOLD_LIGHT = (211, 217, 231)
+IVORY = (236, 233, 220)
+CREAM = (247, 245, 236)
+SAGE = (103, 118, 141)
 
 RNG = np.random.default_rng(2026)
 
@@ -198,17 +198,17 @@ def silk_art(w: int, h: int, t: float, dark: bool = True, seed: int = 0) -> np.n
         stops = [
             (0.00, (18, 7, 10)),
             (0.30, WINE),
-            (0.52, (92, 34, 30)),
+            (0.52, (128, 35, 30)),
             (0.70, CLAY),
             (0.84, GOLD),
             (0.95, GOLD_LIGHT),
-            (1.00, (250, 240, 222)),
+            (1.00, (236, 233, 220)),
         ]
     else:
         stops = [
-            (0.00, (122, 54, 36)),
+            (0.00, (128, 35, 30)),
             (0.35, CLAY),
-            (0.62, (206, 150, 112)),
+            (0.62, (138, 169, 197)),
             (0.82, GOLD_LIGHT),
             (1.00, IVORY),
         ]
@@ -316,7 +316,7 @@ def poster_silk(w=1200, h=1500) -> Image.Image:
 
     micro = font(SANS, 22, "Medium")
     micro_s = font(SANS, 18, "Regular")
-    tracked(d, (86, 112), "MUSA — UNIVERSO VISUAL", micro, IVORY + (230,), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — UNIVERSO VISUAL", micro, IVORY + (230,), 8)
     tracked(d, (w - 86, 112), "01 / 06", micro, IVORY + (190,), 6, align="right")
     d.line([(86, 148), (w - 86, 148)], fill=IVORY + (70,), width=1)
 
@@ -325,7 +325,7 @@ def poster_silk(w=1200, h=1500) -> Image.Image:
     big = font(SERIF, 118, "Light")
     ital = font(SERIF_IT, 118, "Light")
     tracked(d, (84, 1060), "Donde las ideas", big, IVORY, 1)
-    tracked(d, (84, 1182), "encuentran su voz.", ital, (244, 214, 178), 1)
+    tracked(d, (84, 1182), "encuentran su voz.", ital, (211, 217, 231), 1)
 
     d.line([(86, 1290), (w - 86, 1290)], fill=IVORY + (70,), width=1)
     tracked(d, (86, 1348), "CREATIVIDAD · ESTRATEGIA · COMUNICACIÓN", micro_s, IVORY + (200,), 5)
@@ -340,10 +340,10 @@ def poster_type(w=1200, h=1500) -> Image.Image:
     img = to_image(arr)
     d = ImageDraw.Draw(img)
 
-    # retícula editorial
+    # retícula editorial (solo en la zona superior, para no cruzar el texto)
     for x in (86, 300, w - 86):
-        d.line([(x, 300), (x, h - 86)], fill=(20, 16, 13, 22), width=1)
-    for y in (86, 300, h - 380, h - 86):
+        d.line([(x, 300), (x, 560)], fill=(20, 16, 13, 22), width=1)
+    for y in (300, 560, h - 86):
         d.line([(86, y), (w - 86, y)], fill=(20, 16, 13, 22), width=1)
 
     # bloque terracota
@@ -353,13 +353,13 @@ def poster_type(w=1200, h=1500) -> Image.Image:
     tracked(d, (967, 470), "INSPIRACIÓN", font(SANS, 17, "Medium"), CREAM, 6, align="center")
 
     micro = font(SANS, 22, "Medium")
-    tracked(d, (86, 112), "MUSA — ESTUDIO CREATIVO", micro, (30, 24, 20), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — ESTUDIO CREATIVO", micro, (12, 11, 11), 8)
     tracked(d, (w - 86, 112), "02 / 06", micro, (30, 24, 20, 160), 6, align="right")
 
     big = font(SERIF, 372, "Light")
     tracked(d, (72, 900), "MUSA", big, INK, 16)
-    tracked(d, (86, 1000), "la musa es la chispa", font(SERIF_IT, 58), (70, 52, 44), 0.5)
-    tracked(d, (86, 1072), "que hace posible la idea.", font(SERIF_IT, 58), (70, 52, 44), 0.5)
+    tracked(d, (86, 1000), "la musa es la chispa", font(SERIF_IT, 58), (70, 66, 60), 0.5)
+    tracked(d, (86, 1072), "que hace posible la idea.", font(SERIF_IT, 58), (70, 66, 60), 0.5)
 
     d.line([(86, 1160), (1114, 1160)], fill=(20, 16, 13, 90), width=1)
     paragraph(
@@ -367,10 +367,10 @@ def poster_type(w=1200, h=1500) -> Image.Image:
         (86, 1235),
         ["Una empresa puede tener un gran producto.", "Lo que a veces falta es la manera de contarlo."],
         font(SERIF, 40),
-        (38, 30, 26),
+        (28, 26, 25),
         54,
     )
-    tracked(d, (86, 1375), "MUSA = INSPIRACIÓN QUE CONVIERTE IDEAS EN POSIBILIDADES", font(SANS, 15, "Medium"), (90, 72, 60), 4)
+    tracked(d, (86, 1375), "MUSA DESIGN LAB · INSPIRACIÓN QUE CONVIERTE IDEAS EN POSIBILIDADES", font(SANS, 15, "Medium"), (80, 76, 70), 4)
 
     d.rectangle([0, 0, w - 1, h - 1], outline=(20, 16, 13, 40), width=1)
     return add_grain(img, 2.6, 22)
@@ -385,7 +385,7 @@ def poster_orb(w=1200, h=1500) -> Image.Image:
     # órbita
     d.ellipse([190, 470, 1010, 1010], outline=GOLD_LIGHT + (110,), width=2)
     # esfera
-    orb = sphere((w, h), 600, 740, 296, base=WINE_DEEP, hi=(206, 166, 118))
+    orb = sphere((w, h), 600, 740, 296, base=WINE_DEEP, hi=(138, 169, 197))
     img.paste(orb, (0, 0), orb)
     # brillo
     glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
@@ -396,24 +396,24 @@ def poster_orb(w=1200, h=1500) -> Image.Image:
     d = ImageDraw.Draw(img)
 
     micro = font(SANS, 22, "Medium")
-    tracked(d, (86, 112), "MUSA — UNIVERSO VISUAL", micro, IVORY + (225,), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — UNIVERSO VISUAL", micro, IVORY + (225,), 8)
     tracked(d, (w - 86, 112), "03 / 06", micro, IVORY + (170,), 6, align="right")
     d.line([(86, 148), (w - 86, 148)], fill=IVORY + (65,), width=1)
 
     tracked(d, (600, 205), "SER VISTA", font(SANS, 20, "Medium"), IVORY + (200,), 12, align="center")
     tracked(d, (600, 295), "Ser entendida.", font(SERIF, 92, "Light"), IVORY, 1, align="center")
-    tracked(d, (600, 379), "Ser recordada.", font(SERIF_IT, 92, "Light"), (240, 208, 172), 1, align="center")
+    tracked(d, (600, 379), "Ser recordada.", font(SERIF_IT, 92, "Light"), (211, 217, 231), 1, align="center")
 
     draw_star(d, 600, 1140, 22, GOLD_LIGHT + (230,))
     tracked(d, (600, 1220), "Comunicar no es publicar.", font(SERIF, 58), IVORY, 0.5, align="center")
-    tracked(d, (600, 1288), "Comunicar es conectar.", font(SERIF_IT, 64), (242, 212, 176), 0.5, align="center")
-    tracked(d, (600, 1380), "MUSA — DÓNDE LAS IDEAS ENCUENTRAN SU VOZ", font(SANS, 16, "Medium"), IVORY + (170,), 4, align="center")
+    tracked(d, (600, 1288), "Comunicar es conectar.", font(SERIF_IT, 64), (211, 217, 231), 0.5, align="center")
+    tracked(d, (600, 1380), "MUSA DESIGN LAB — DÓNDE LAS IDEAS ENCUENTRAN SU VOZ", font(SANS, 16, "Medium"), IVORY + (170,), 4, align="center")
 
     return add_grain(img, 3.6, 33)
 
 
 def poster_arch(w=1200, h=1500) -> Image.Image:
-    arr = paper(w, h, (249, 244, 235), 41)
+    arr = paper(w, h, (247, 245, 236), 41)
     img = to_image(arr)
     d = ImageDraw.Draw(img)
 
@@ -427,7 +427,7 @@ def poster_arch(w=1200, h=1500) -> Image.Image:
     d.line([(1000, 520), (1000, 920)], fill=GOLD + (110,), width=2)
 
     micro = font(SANS, 22, "Medium")
-    tracked(d, (86, 112), "MUSA — PROPÓSITO", micro, (30, 24, 20), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — PROPÓSITO", micro, (12, 11, 11), 8)
     tracked(d, (w - 86, 112), "04 / 06", micro, (30, 24, 20, 160), 6, align="right")
 
     tracked(d, (86, 1110), "El puente entre", font(SERIF, 90), INK, 0.5)
@@ -438,17 +438,17 @@ def poster_arch(w=1200, h=1500) -> Image.Image:
         (86, 1308),
         ["Claridad, coherencia y una identidad", "visual cuidada para cada empresa."],
         font(SERIF, 42),
-        (52, 42, 36),
+        (40, 38, 36),
         54,
     )
     draw_star(d, 1060, 1330, 22, CLAY + (235,))
-    tracked(d, (1114, 1440), "MUSA", font(SANS, 15, "Medium"), (60, 46, 38), 5, align="right")
+    tracked(d, (1114, 1440), "MUSA DESIGN LAB", font(SANS, 15, "Medium"), (40, 38, 36), 5, align="right")
     d.rectangle([0, 0, w - 1, h - 1], outline=(20, 16, 13, 36), width=1)
     return add_grain(img, 2.4, 44)
 
 
 def poster_grid(w=1200, h=1500) -> Image.Image:
-    arr = paper(w, h, (247, 241, 231), 55)
+    arr = paper(w, h, (240, 237, 226), 55)
     img = to_image(arr)
     d = ImageDraw.Draw(img)
 
@@ -464,18 +464,18 @@ def poster_grid(w=1200, h=1500) -> Image.Image:
     d.ellipse([910, 540, 970, 600], fill=CLAY)
 
     micro = font(SANS, 22, "Medium")
-    tracked(d, (86, 112), "MUSA — ESTRATEGIA", micro, (30, 24, 20), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — ESTRATEGIA", micro, (12, 11, 11), 8)
     tracked(d, (w - 86, 112), "05 / 06", micro, (30, 24, 20, 160), 6, align="right")
 
     tracked(d, (86, 1020), "Ideas que se vuelven", font(SERIF, 78), INK, 0.5)
     tracked(d, (86, 1100), "posibilidades.", font(SERIF_IT, 100), CLAY, 0.5)
     d.line([(86, 1160), (1114, 1160)], fill=(20, 16, 13, 110), width=1)
-    tracked(d, (86, 1230), "CREATIVIDAD  +  ESTRATEGIA  +  COMUNICACIÓN  +  DISEÑO DIGITAL", font(SANS, 16, "Medium"), (60, 46, 38), 4)
+    tracked(d, (86, 1230), "CREATIVIDAD  +  ESTRATEGIA  +  COMUNICACIÓN  +  DISEÑO DIGITAL", font(SANS, 16, "Medium"), (40, 38, 36), 4)
 
     # etiqueta vertical
     vlabel = Image.new("RGBA", (420, 60), (0, 0, 0, 0))
     vd = ImageDraw.Draw(vlabel)
-    tracked(vd, (0, 42), "ESTRATEGIA DE CONTENIDO", font(SANS, 16, "Medium"), (60, 46, 38), 5)
+    tracked(vd, (0, 42), "ESTRATEGIA DE CONTENIDO", font(SANS, 16, "Medium"), (40, 38, 36), 5)
     vlabel = vlabel.rotate(90, expand=True)
     img.paste(vlabel, (1046, 420), vlabel)
 
@@ -488,7 +488,7 @@ def poster_ribbon(w=1200, h=1500) -> Image.Image:
     y, x = np.mgrid[0:h, 0:w].astype(np.float32)
     u, v = x / w, y / h
     field = 0.5 + 0.5 * np.sin((u * 2.2 + v * 1.4 + 0.4) * math.pi)
-    stops = [(0.0, (72, 24, 22)), (0.45, (140, 62, 46)), (0.78, CLAY), (1.0, (202, 148, 116))]
+    stops = [(0.0, (26, 12, 15)), (0.45, (128, 35, 30)), (0.78, CLAY), (1.0, (138, 169, 197))]
     arr = gradient_map(field, stops).astype(np.float32)
 
     # cintas de seda claras
@@ -504,27 +504,27 @@ def poster_ribbon(w=1200, h=1500) -> Image.Image:
     d = ImageDraw.Draw(img)
 
     micro = font(SANS, 22, "Medium")
-    tracked(d, (86, 112), "MUSA — COMUNICACIÓN", micro, IVORY + (230,), 8)
+    tracked(d, (86, 112), "MUSA DESIGN LAB — COMUNICACIÓN", micro, IVORY + (230,), 8)
     tracked(d, (w - 86, 112), "06 / 06", micro, IVORY + (180,), 6, align="right")
 
     tracked(d, (600, 660), "Comunicar", font(SERIF, 150, "Light"), IVORY, 1, align="center")
-    tracked(d, (600, 810), "es conectar.", font(SERIF_IT, 150, "Light"), (250, 222, 186), 1, align="center")
+    tracked(d, (600, 810), "es conectar.", font(SERIF_IT, 150, "Light"), (226, 233, 244), 1, align="center")
     draw_star(d, 600, 900, 20, GOLD_LIGHT)
     tracked(d, (600, 1000), "Hacer que otra persona entienda, recuerde y confíe.", font(SERIF_IT, 42), IVORY + (215,), 0.5, align="center")
     d.line([(400, 1120), (800, 1120)], fill=IVORY + (90,), width=1)
-    tracked(d, (600, 1200), "MUSA", font(SERIF, 72, "Medium"), IVORY, 18, align="center")
+    tracked(d, (600, 1200), "MUSA DESIGN LAB", font(SERIF, 60, "Medium"), IVORY, 12, align="center")
     tracked(d, (600, 1280), "DÓNDE LAS IDEAS ENCUENTRAN SU VOZ", font(SANS, 16, "Medium"), IVORY + (190,), 5, align="center")
     return add_grain(img, 3.2, 66)
 
 
 def team_card(name: str, initials: str, accent, seed: int, file: Path):
     w, h = 1000, 1250
-    arr = paper(w, h, (247, 241, 231), seed)
+    arr = paper(w, h, (240, 237, 226), seed)
     img = to_image(arr)
     d = ImageDraw.Draw(img)
     d.rectangle([40, 40, w - 40, h - 40], outline=(20, 16, 13, 60), width=1)
 
-    tracked(d, (500, 116), "EQUIPO FUNDADOR", font(SANS, 16, "Medium"), (60, 46, 38), 6, align="center")
+    tracked(d, (500, 116), "EQUIPO FUNDADOR", font(SANS, 16, "Medium"), (40, 38, 36), 6, align="center")
 
     # arco con arte interior
     art = to_image(silk_art(560, 690, t=seed * 0.37, dark=False))
@@ -533,11 +533,20 @@ def team_card(name: str, initials: str, accent, seed: int, file: Path):
     paste_arch(img, art, (220, 158, 560, 690), 280, outline=accent + (120,), width=2)
 
     d = ImageDraw.Draw(img)
-    tracked(d, (500, 1010), initials, font(SERIF, 150, "Light"), accent, 8, align="center")
-    tracked(d, (500, 1072), "MUSA", font(SANS, 14, "Medium"), (86, 66, 54), 7, align="center")
-    d.line([(330, 1118), (670, 1118)], fill=(20, 16, 13, 70), width=1)
-    tracked(d, (500, 1168), "CREATIVIDAD · ESTRATEGIA · COMUNICACIÓN", font(SANS, 12, "Medium"), (100, 80, 66), 3, align="center")
-    return add_grain(img, 2.6, seed + 100).save(file, quality=92, optimize=True)
+    tracked(d, (500, 962), initials, font(SERIF, 140, "Light"), accent, 8, align="center")
+
+    logo = Image.open(MEDIA / "brand" / "logo-stacked-dark.png").convert("RGBA")
+    logo.thumbnail((200, 139), Image.LANCZOS)
+    img.paste(logo, (500 - logo.width // 2, 992), logo)
+
+    d = ImageDraw.Draw(img)
+    d.line([(330, 1158), (670, 1158)], fill=(12, 11, 11, 70), width=1)
+    tracked(d, (500, 1196), "CREATIVIDAD · ESTRATEGIA · COMUNICACIÓN", font(SANS, 12, "Medium"), (90, 86, 80), 3, align="center")
+
+    out = add_grain(img, 2.6, seed + 100)
+    out.save(file, quality=92, optimize=True)
+    out.save(file.with_suffix(".webp"), quality=86, method=6)
+    return out
 
 
 # ----------------------------------------------------------------------------
@@ -611,7 +620,7 @@ def reel_video(out: Path, poster: Path, seconds=8, fps=30, W=720, H=1280):
 
             # marco editorial
             d.rectangle([34, 34, W - 34, H - 34], outline=IVORY + (60,), width=1)
-            tracked(d, (56, 92), "MUSA", font(SANS, 18, "Medium"), IVORY + (210,), 7)
+            tracked(d, (56, 92), "MUSA DESIGN LAB", font(SANS, 18, "Medium"), IVORY + (210,), 7)
             tracked(d, (W - 56, 92), "REEL — 2026", font(SANS, 13, "Medium"), IVORY + (170,), 4, align="right")
 
             # escenas
@@ -619,7 +628,7 @@ def reel_video(out: Path, poster: Path, seconds=8, fps=30, W=720, H=1280):
                 a = min(1.0, prog / 0.08)
                 col = IVORY
                 tracked(d, (W / 2, 560), "Ideas que", font(SERIF, 92, "Light"), col, 1, align="center")
-                tracked(d, (W / 2, 650), "encuentran", font(SERIF_IT, 88, "Light"), (244, 214, 178), 1, align="center")
+                tracked(d, (W / 2, 650), "encuentran", font(SERIF_IT, 88, "Light"), (211, 217, 231), 1, align="center")
                 tracked(d, (W / 2, 740), "su voz.", font(SERIF, 96, "Light"), col, 1, align="center")
                 draw_star(d, W / 2, 840, 22, GOLD_LIGHT)
             elif prog < 0.67:
@@ -630,8 +639,8 @@ def reel_video(out: Path, poster: Path, seconds=8, fps=30, W=720, H=1280):
                 tracked(d, (W / 2, 880), "Un aliado creativo", font(SERIF_IT, 46), IVORY + (220,), 0.5, align="center")
             else:
                 tracked(d, (W / 2, 560), "Dónde las ideas", font(SERIF, 66, "Light"), IVORY, 0.5, align="center")
-                tracked(d, (W / 2, 640), "encuentran su voz.", font(SERIF_IT, 70, "Light"), (246, 216, 180), 0.5, align="center")
-                tracked(d, (W / 2, 760), "MUSA", font(SANS, 22, "Medium"), IVORY, 14, align="center")
+                tracked(d, (W / 2, 640), "encuentran su voz.", font(SERIF_IT, 70, "Light"), (211, 217, 231), 0.5, align="center")
+                tracked(d, (W / 2, 760), "MUSA DESIGN LAB", font(SANS, 22, "Medium"), IVORY, 10, align="center")
 
             d.line([(56, H - 96), (W - 56, H - 96)], fill=IVORY + (50,), width=1)
             d.line([(56, H - 96), (56 + (W - 112) * prog, H - 96)], fill=GOLD_LIGHT + (220,), width=2)
@@ -661,13 +670,13 @@ def showreel(out: Path, poster: Path, seconds=16, fps=24, W=1600, H=900):
                 d = ImageDraw.Draw(img)
                 tracked(d, (W / 2, H / 2 + 30), "MUSA", font(SERIF, 240, "Light"), IVORY, 40, align="center")
                 draw_star(d, W / 2, H / 2 - 150, 26, GOLD_LIGHT)
-                tracked(d, (W / 2, H / 2 + 130), "UNIVERSO VISUAL", font(SANS, 20, "Medium"), IVORY + (210,), 14, align="center")
+                tracked(d, (W / 2, H / 2 + 130), "MUSA DESIGN LAB — UNIVERSO VISUAL", font(SANS, 18, "Medium"), IVORY + (210,), 10, align="center")
             elif tsec > seconds - per:
                 arr = silk_art(W, H, t=tsec * 0.7)
                 img = to_image(arr * 0.62)
                 d = ImageDraw.Draw(img)
                 tracked(d, (W / 2, H / 2 - 20), "Dónde las ideas", font(SERIF, 110, "Light"), IVORY, 1, align="center")
-                tracked(d, (W / 2, H / 2 + 90), "encuentran su voz.", font(SERIF_IT, 116, "Light"), (246, 216, 180), 1, align="center")
+                tracked(d, (W / 2, H / 2 + 90), "encuentran su voz.", font(SERIF_IT, 116, "Light"), (211, 217, 231), 1, align="center")
                 draw_star(d, W / 2, H / 2 + 190, 18, GOLD_LIGHT)
             else:
                 idx = min(len(imgs) - 1, int((tsec - per) / per))
@@ -684,7 +693,7 @@ def showreel(out: Path, poster: Path, seconds=16, fps=24, W=1600, H=900):
                 img = big.crop((ox, oy, ox + W, oy + H))
                 d = ImageDraw.Draw(img)
                 d.rectangle([36, 36, W - 36, H - 36], outline=(255, 255, 255, 40), width=1)
-                tracked(d, (64, 84), "MUSA — UNIVERSO VISUAL", font(SANS, 16, "Medium"), IVORY + (220,), 7)
+                tracked(d, (64, 84), "MUSA DESIGN LAB — UNIVERSO VISUAL", font(SANS, 16, "Medium"), IVORY + (220,), 7)
                 tracked(d, (W - 64, 84), f"{idx + 1:02d} / 06", font(SANS, 14, "Medium"), IVORY + (180,), 5, align="right")
                 d.line([(64, H - 52), (W - 64, H - 52)], fill=(255, 255, 255, 45), width=1)
                 d.line([(64, H - 52), (64 + (W - 128) * (i / n), H - 52)], fill=GOLD_LIGHT + (220,), width=2)
@@ -704,12 +713,20 @@ def og_image(path: Path):
     arr = silk_art(W, H, t=2.2)
     img = to_image(arr * 0.5)
     d = ImageDraw.Draw(img)
-    tracked(d, (72, 118), "MUSA — ESTUDIO CREATIVO", font(SANS, 18, "Medium"), IVORY + (210,), 7)
-    tracked(d, (W - 72, 118), "MUSA · 2026", font(SANS, 14, "Medium"), IVORY + (150,), 5, align="right")
-    tracked(d, (W / 2, 360), "MUSA", font(SERIF, 230, "Light"), IVORY, 46, align="center")
-    draw_star(d, W / 2, 424, 20, GOLD_LIGHT)
-    tracked(d, (W / 2, 480), "Dónde las ideas encuentran su voz.", font(SERIF_IT, 52), (246, 216, 180), 0.5, align="center")
-    tracked(d, (W / 2, 552), "CREATIVIDAD · ESTRATEGIA · COMUNICACIÓN", font(SANS, 15, "Medium"), IVORY + (200,), 6, align="center")
+    tracked(d, (72, 96), "MUSA DESIGN LAB", font(SANS, 18, "Medium"), IVORY + (210,), 7)
+    tracked(d, (W - 72, 96), "SOGAMOSO · BOYACÁ", font(SANS, 14, "Medium"), IVORY + (150,), 5, align="right")
+
+    logo = Image.open(MEDIA / "brand" / "logo-stacked-light.png").convert("RGBA")
+    logo.thumbnail((300, 208), Image.LANCZOS)
+    img = img.convert("RGBA")
+    img.paste(logo, (W // 2 - logo.width // 2, 118), logo)
+    img = img.convert("RGB")
+    d = ImageDraw.Draw(img)
+
+    draw_star(d, W / 2, 380, 18, GOLD_LIGHT)
+    tracked(d, (W / 2, 430), "Dónde las ideas encuentran su voz.", font(SERIF_IT, 52), (211, 217, 231), 0.5, align="center")
+    tracked(d, (W / 2, 500), "CREATIVIDAD · ESTRATEGIA · COMUNICACIÓN", font(SANS, 15, "Medium"), IVORY + (200,), 6, align="center")
+    tracked(d, (W / 2, 570), "musa_designlab", font(SANS, 13, "Medium"), IVORY + (150,), 4, align="center")
     add_grain(img, 3.0, 77).save(path, quality=90, optimize=True)
 
 
@@ -718,22 +735,6 @@ def grain_tile(path: Path):
     a = rng.normal(128, 26, (220, 220)).clip(0, 255).astype(np.uint8)
     arr = np.dstack([a, a, a, np.full_like(a, 22)])
     Image.fromarray(arr, "RGBA").save(path, optimize=True)
-
-
-def footer_wordmark(path: Path, word="MUSA", size=640):
-    """Marca de agua tipográfica del pie, como PNG recortado (decorativa)."""
-    face = font(SERIF, size, "Light")
-    tracking = size * 0.06
-    widths = [face.getlength(ch) for ch in word]
-    total = sum(widths) + tracking * (len(word) - 1)
-    pad = 40
-    canvas = Image.new("RGBA", (int(total) + pad * 2, int(size * 1.02)), (0, 0, 0, 0))
-    d = ImageDraw.Draw(canvas)
-    x = pad
-    for ch, w in zip(word, widths):
-        d.text((x, pad + size * 0.80), ch, font=face, fill=IVORY + (255,), anchor="ls")
-        x += w + tracking
-    canvas.crop(canvas.getbbox()).save(path, optimize=True)
 
 
 # ----------------------------------------------------------------------------
@@ -755,15 +756,14 @@ def main():
         print("   ", name)
 
     print("→ Generando retratos abstractos del equipo...")
-    team_card("Isabella Corredor", "IC", CLAY, 71, MEDIA / "team-isabella.jpg")
-    team_card("Emilia Macias", "EM", GOLD, 72, MEDIA / "team-emilia.jpg")
-    team_card("Elizabeth Román", "ER", WINE, 73, MEDIA / "team-elizabeth.jpg")
+    team_card("Isabella Corredor", "IC", WINE, 71, MEDIA / "team-isabella.jpg")
+    team_card("Emilia Macias", "EM", CLAY, 72, MEDIA / "team-emilia.jpg")
+    team_card("Elizabeth Román", "ER", (78, 95, 121), 73, MEDIA / "team-elizabeth.jpg")
     print("    equipo listo")
 
     print("→ Generando imagen Open Graph y textura...")
     og_image(OUT / "og-image.jpg")
     grain_tile(OUT / "grain.png")
-    footer_wordmark(MEDIA / "footer-musa.png")
 
     print("→ Renderizando loop del hero (10s)...")
     hero_video(MEDIA / "hero.mp4", MEDIA / "hero-poster.jpg")

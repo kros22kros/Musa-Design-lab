@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#17120F" />
+  <meta name="theme-color" content="#0c0b0b" />
 
-  <title>MUSA — Dónde las ideas encuentran su voz | Estudio creativo</title>
-  <meta name="description" content="MUSA es un estudio creativo que ayuda a empresas y marcas a fortalecer su comunicación y presencia digital: contenido para redes, reels, diseño promocional, estrategia e identidad visual." />
-  <meta name="author" content="MUSA — Isabella Corredor, Emilia Macias, Elizabeth Román" />
+  <title>MUSA Design Lab — Dónde las ideas encuentran su voz</title>
+  <meta name="description" content="MUSA Design Lab es un estudio creativo en Sogamoso, Boyacá, que ayuda a empresas y marcas a fortalecer su comunicación y presencia digital: contenido para redes, reels, diseño promocional, estrategia e identidad visual." />
+  <meta name="author" content="MUSA Design Lab — Isabella Corredor, Emilia Macias, Elizabeth Román" />
   <link rel="canonical" href="https://musa.studio/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
-  <meta property="og:site_name" content="MUSA" />
-  <meta property="og:title" content="MUSA — Dónde las ideas encuentran su voz" />
+  <meta property="og:site_name" content="MUSA Design Lab" />
+  <meta property="og:title" content="MUSA Design Lab — Dónde las ideas encuentran su voz" />
   <meta property="og:description" content="Estudio creativo de comunicación y presencia digital. Creatividad, estrategia, comunicación y diseño digital para empresas y marcas." />
-  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image" content="https://musa.studio/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="MUSA Design Lab — Dónde las ideas encuentran su voz" />
   <meta property="og:url" content="https://musa.studio/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MUSA — Dónde las ideas encuentran su voz" />
+  <meta name="twitter:title" content="MUSA Design Lab — Dónde las ideas encuentran su voz" />
   <meta name="twitter:description" content="Estudio creativo de comunicación y presencia digital." />
-  <meta name="twitter:image" content="/og-image.jpg" />
+  <meta name="twitter:image" content="https://musa.studio/og-image.jpg" />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/media/brand/favicon.png" />
+  <link rel="apple-touch-icon" href="/media/brand/favicon.png" />
   <link rel="preload" as="image" href="/media/hero-poster.jpg" />
 
   <script>
@@ -47,13 +48,21 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "MUSA",
+    "name": "MUSA Design Lab",
     "alternateName": "MUSA Estudio Creativo",
     "url": "https://musa.studio/",
-    "logo": "https://musa.studio/favicon.svg",
+    "logo": "https://musa.studio/media/brand/logo-horizontal-dark.png",
     "description": "Estudio creativo dedicado a la comunicación y presencia digital de empresas y marcas: contenido, reels, diseño promocional, estrategia e identidad visual.",
     "slogan": "Dónde las ideas encuentran su voz.",
     "foundingDate": "2026",
+    "telephone": "+57 321 382 7782",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sogamoso",
+      "addressRegion": "Boyacá",
+      "addressCountry": "CO"
+    },
+    "sameAs": ["https://www.instagram.com/musa_designlab"],
     "founders": [
       { "@type": "Person", "name": "Isabella Corredor" },
       { "@type": "Person", "name": "Emilia Macias" },
@@ -85,7 +94,9 @@
       <div class="preloader__mark">
         <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 1.5c.7 12 9.8 21.1 21.8 21.8C33.8 24 24.7 33.1 24 45.1 23.3 33.1 14.2 24 2.2 23.3 14.2 22.6 23.3 13.5 24 1.5Z"/></svg>
       </div>
-      <div class="preloader__word">MUSA</div>
+      <div class="preloader__word">
+        <img src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
+      </div>
       <div class="preloader__meta">
         <span>Inspiración que convierte ideas en posibilidades</span>
         <span class="preloader__count">00</span>
@@ -96,15 +107,16 @@
 
   <!-- Navegación -->
   <header class="nav" id="nav">
-    <a class="nav__brand" href="#inicio" aria-label="MUSA, ir al inicio">
-      <svg class="nav__mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 1.5c.7 12 9.8 21.1 21.8 21.8C33.8 24 24.7 33.1 24 45.1 23.3 33.1 14.2 24 2.2 23.3 14.2 22.6 23.3 13.5 24 1.5Z"/></svg>
-      <span>MUSA</span>
+    <a class="nav__brand" href="#inicio" aria-label="MUSA Design Lab, ir al inicio">
+      <img class="nav__logo nav__logo--light" src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
+      <img class="nav__logo nav__logo--dark" src="/media/brand/logo-stacked-dark.png" alt="" width="482" height="334" />
     </a>
 
     <nav class="nav__links" aria-label="Navegación principal">
       <a href="#estudio" data-nav-link>Estudio</a>
       <a href="#servicios" data-nav-link>Servicios</a>
       <a href="#proceso" data-nav-link>Proceso</a>
+      <a href="#paquetes" data-nav-link>Paquetes</a>
       <a href="#portafolio" data-nav-link>Universo</a>
       <a href="#equipo" data-nav-link>Equipo</a>
     </nav>
@@ -128,16 +140,16 @@
         <a href="#nombre"><span>02</span>El nombre</a>
         <a href="#servicios"><span>03</span>Servicios</a>
         <a href="#proceso"><span>04</span>Proceso</a>
-        <a href="#portafolio"><span>05</span>Universo</a>
-        <a href="#equipo"><span>06</span>Equipo</a>
-        <a href="#contacto"><span>07</span>Contacto</a>
+        <a href="#paquetes"><span>05</span>Paquetes</a>
+        <a href="#portafolio"><span>06</span>Universo</a>
+        <a href="#equipo"><span>07</span>Equipo</a>
+        <a href="#contacto"><span>08</span>Contacto</a>
       </nav>
       <div class="menu__foot">
         <p>Dónde las ideas encuentran su voz.</p>
         <div class="menu__social">
           <a href="#" data-social="instagram">Instagram</a>
-          <a href="#" data-social="tiktok">TikTok</a>
-          <a href="#" data-social="facebook">Facebook</a>
+          <a href="#" data-wa="0" data-wa-message="Hola MUSA Design Lab, quiero información sobre sus servicios.">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -178,14 +190,14 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a class="btn btn--ghost" href="#estudio" data-magnetic>
-              <span>Descubrir MUSA</span>
+              <span>Descubrir MUSA Design Lab</span>
             </a>
           </div>
         </div>
       </div>
 
       <div class="hero__foot">
-        <p class="hero__foot-item">MUSA <span>©</span> 2026</p>
+        <p class="hero__foot-item">MUSA Design Lab <span>©</span> 2026</p>
         <a class="hero__scroll" href="#estudio" aria-label="Desliza para descubrir">
           <span class="hero__scroll-line"></span>
           <span>Desliza</span>
@@ -224,18 +236,18 @@
           <div class="frame" data-image-reveal>
             <picture>
               <source srcset="/media/gallery-02.webp" type="image/webp" />
-              <img src="/media/gallery-02.jpg" alt="Composición editorial de MUSA con la palabra MUSA y la frase la musa es la chispa que hace posible la idea" width="1200" height="1500" loading="lazy" data-parallax="0.08" />
+              <img src="/media/gallery-02.jpg" alt="Composición editorial de MUSA Design Lab con la palabra MUSA y la frase la musa es la chispa que hace posible la idea" width="1200" height="1500" loading="lazy" data-parallax="0.08" />
             </picture>
           </div>
           <figcaption class="about__caption">
             <span class="star" aria-hidden="true">✦</span>
-            Identidad MUSA — Estudio creativo
+            Identidad MUSA Design Lab
           </figcaption>
         </figure>
 
         <div class="about__body">
           <p class="lead" data-reveal>
-            MUSA es una empresa creativa dedicada a acompañar a otras empresas,
+            MUSA Design Lab es una empresa creativa dedicada a acompañar a otras empresas,
             marcas y negocios en el fortalecimiento de su presencia y comunicación
             en el entorno digital.
           </p>
@@ -273,7 +285,10 @@
     <section class="section section--dark section--meaning" id="nombre">
       <div class="meaning__top">
         <p class="label label--light" data-reveal><span>02</span> El nombre</p>
-        <p class="meaning__word" aria-hidden="true" data-reveal>MUSA</p>
+        <div class="meaning__word" aria-hidden="true" data-reveal>
+          <span>MUSA</span>
+          <img src="/media/brand/logo-script-light.png" alt="" width="386" height="109" />
+        </div>
       </div>
 
       <div class="meaning__grid">
@@ -384,7 +399,7 @@
           <article class="tabs__panel" id="panel-vision" role="tabpanel" aria-labelledby="tab-vision" data-panel="vision" hidden>
             <p class="tabs__big">Convertirnos en una empresa reconocida por su creatividad y por ayudar a otras empresas a mejorar la manera en que se presentan y comunican.</p>
             <div class="tabs__cols">
-              <p>Imaginamos a MUSA como una empresa en constante crecimiento, reconocida por la calidad de sus propuestas y por la cercanía con la que acompaña a cada empresa.</p>
+              <p>Imaginamos a MUSA Design Lab como una empresa en constante crecimiento, reconocida por la calidad de sus propuestas y por la cercanía con la que acompaña a cada empresa.</p>
               <ul class="tick-list">
                 <li>Consolidarnos como un referente creativo y confiable.</li>
                 <li>Trabajar con empresas de diversos sectores.</li>
@@ -419,7 +434,7 @@
               <div class="service__art">
                 <picture>
                   <source srcset="/media/gallery-01.webp" type="image/webp" />
-                  <img src="/media/gallery-01.jpg" alt="Pieza editorial oscura con textura de seda y tipografía serif de MUSA" loading="lazy" />
+                  <img src="/media/gallery-01.jpg" alt="Pieza editorial oscura con textura de seda y tipografía serif de MUSA Design Lab" loading="lazy" />
                 </picture>
               </div>
               <div class="service__body">
@@ -441,7 +456,7 @@
               <div class="service__art">
                 <picture>
                   <source srcset="/media/gallery-03.webp" type="image/webp" />
-                  <img src="/media/gallery-03.jpg" alt="Pieza editorial de MUSA con esfera escultórica y la frase ser vista, ser entendida, ser recordada" loading="lazy" />
+                  <img src="/media/gallery-03.jpg" alt="Pieza editorial de MUSA Design Lab con esfera escultórica y la frase ser vista, ser entendida, ser recordada" loading="lazy" />
                 </picture>
               </div>
               <div class="service__body">
@@ -463,7 +478,7 @@
               <div class="service__art">
                 <picture>
                   <source srcset="/media/gallery-05.webp" type="image/webp" />
-                  <img src="/media/gallery-05.jpg" alt="Composición editorial de MUSA con retícula, geometría y la frase ideas que se vuelven posibilidades" loading="lazy" />
+                  <img src="/media/gallery-05.jpg" alt="Composición editorial de MUSA Design Lab con retícula, geometría y la frase ideas que se vuelven posibilidades" loading="lazy" />
                 </picture>
               </div>
               <div class="service__body">
@@ -485,7 +500,7 @@
               <div class="service__art">
                 <picture>
                   <source srcset="/media/gallery-02.webp" type="image/webp" />
-                  <img src="/media/gallery-02.jpg" alt="Póster tipográfico de MUSA sobre la inspiración y las ideas" loading="lazy" />
+                  <img src="/media/gallery-02.jpg" alt="Póster tipográfico de MUSA Design Lab sobre la inspiración y las ideas" loading="lazy" />
                 </picture>
               </div>
               <div class="service__body">
@@ -507,7 +522,7 @@
               <div class="service__art">
                 <picture>
                   <source srcset="/media/gallery-06.webp" type="image/webp" />
-                  <img src="/media/gallery-06.jpg" alt="Pieza de MUSA con cintas de seda y la frase comunicar es conectar" loading="lazy" />
+                  <img src="/media/gallery-06.jpg" alt="Pieza de MUSA Design Lab con cintas de seda y la frase comunicar es conectar" loading="lazy" />
                 </picture>
               </div>
               <div class="service__body">
@@ -637,17 +652,108 @@
       </div>
     </section>
 
+    <!-- ============================== PAQUETES ========================== -->
+    <section class="section packages" id="paquetes">
+      <div class="section__head section__head--split">
+        <div>
+          <p class="label" data-reveal><span>07</span> Paquetes</p>
+          <h2 class="display" data-split>
+            Listo para que tu marca <em>tenga voz</em>.
+          </h2>
+        </div>
+        <p class="section__note" data-reveal>
+          Tres formas de empezar según el momento de tu marca. Precios en pesos
+          colombianos (COP), con propuesta creativa y rondas de ajuste incluidas.
+        </p>
+      </div>
+
+      <div class="packages__grid">
+        <article class="package package--wine" data-reveal>
+          <div class="package__head">
+            <h3 class="package__name">Esencial</h3>
+            <p class="package__price"><span>$</span>300.000 <small>COP</small></p>
+          </div>
+          <ul class="package__list">
+            <li>5 post</li>
+            <li>3 historias</li>
+            <li>2 carruseles</li>
+            <li>1 reel</li>
+            <li>Propuesta creativa para el contenido</li>
+            <li>Diseño adaptado a la identidad de la marca</li>
+            <li>1 ronda de cambios</li>
+          </ul>
+          <p class="package__desc">
+            Es nuestra puerta de entrada: concentra lo fundamental para mantener
+            una comunicación visual constante y organizada.
+          </p>
+          <a class="package__cta" href="#" data-wa="0" data-wa-message="Hola MUSA Design Lab, me interesa el paquete Esencial.">
+            Quiero este paquete <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="package package--blue package--featured" data-reveal>
+          <span class="package__badge">Más elegido</span>
+          <div class="package__head">
+            <h3 class="package__name">Impulso</h3>
+            <p class="package__price"><span>$</span>450.000 <small>COP</small></p>
+          </div>
+          <ul class="package__list">
+            <li>8 post</li>
+            <li>3 historias</li>
+            <li>2 carruseles</li>
+            <li>2 reels</li>
+            <li>Desarrollo de ideas creativas</li>
+            <li>1 ronda de cambios</li>
+          </ul>
+          <p class="package__desc">
+            Aumentamos la cantidad y variedad de formatos para que la marca pueda
+            comunicar más ideas durante el mes.
+          </p>
+          <a class="package__cta" href="#" data-wa="0" data-wa-message="Hola MUSA Design Lab, me interesa el paquete Impulso.">
+            Quiero este paquete <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="package package--wine" data-reveal>
+          <div class="package__head">
+            <h3 class="package__name">Identidad</h3>
+            <p class="package__price"><span>$</span>900.000 <small>COP</small></p>
+          </div>
+          <ul class="package__list">
+            <li>Identidad visual básica: concepto, logotipo, paleta y tipografías</li>
+            <li>8 publicaciones para redes sociales</li>
+            <li>4 historias</li>
+            <li>2 carruseles</li>
+            <li>2 reels</li>
+            <li>2 rondas de cambios</li>
+          </ul>
+          <p class="package__desc">
+            Integra identidad visual básica y producción de contenido para que
+            todos los formatos mantengan una misma línea de marca.
+          </p>
+          <a class="package__cta" href="#" data-wa="0" data-wa-message="Hola MUSA Design Lab, me interesa el paquete Identidad.">
+            Quiero este paquete <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      </div>
+
+      <p class="packages__note" data-reveal>
+        Los paquetes son un punto de partida. Ajustamos el alcance a lo que tu
+        marca necesita.
+      </p>
+    </section>
+
     <!-- ============================== PORTAFOLIO ======================== -->
     <section class="section section--dark section--portfolio" id="portafolio">
       <div class="section__head section__head--split">
         <div>
-          <p class="label label--light" data-reveal><span>07</span> Universo visual</p>
+          <p class="label label--light" data-reveal><span>08</span> Universo visual</p>
           <h2 class="display display--light" data-split>
             Una muestra de nuestro <em>lenguaje creativo</em>.
           </h2>
         </div>
         <p class="section__note section__note--light" data-reveal>
-          Piezas conceptuales creadas para explorar la identidad de MUSA.
+          Piezas conceptuales creadas para explorar la identidad de MUSA Design Lab.
           Nuestro portafolio de clientes se construye proyecto a proyecto.
         </p>
       </div>
@@ -699,7 +805,7 @@
         <button class="gallery__item" type="button" data-cat="editorial" data-lightbox data-src="/media/gallery-04.webp" data-caption="El puente entre la idea y su voz — Arco editorial">
           <picture>
             <source srcset="/media/gallery-04.webp" type="image/webp" />
-            <img src="/media/gallery-04.jpg" alt="Pieza editorial de MUSA con arco terracota y la frase el puente entre la idea y su voz" loading="lazy" />
+            <img src="/media/gallery-04.jpg" alt="Pieza editorial de MUSA Design Lab con arco terracota y la frase el puente entre la idea y su voz" loading="lazy" />
           </picture>
           <span class="gallery__overlay">
             <span class="gallery__index">04</span>
@@ -723,7 +829,7 @@
         <button class="gallery__item gallery__item--tall" type="button" data-cat="movimiento" data-lightbox data-src="/media/gallery-06.webp" data-caption="Comunicar es conectar — Estudio de textura">
           <picture>
             <source srcset="/media/gallery-06.webp" type="image/webp" />
-            <img src="/media/gallery-06.jpg" alt="Pieza de MUSA con cintas de seda y la frase comunicar es conectar" loading="lazy" />
+            <img src="/media/gallery-06.jpg" alt="Pieza de MUSA Design Lab con cintas de seda y la frase comunicar es conectar" loading="lazy" />
           </picture>
           <span class="gallery__overlay">
             <span class="gallery__index">06</span>
@@ -755,7 +861,7 @@
     <section class="section section--motion" id="movimiento">
       <div class="motion__grid">
         <div class="motion__copy">
-          <p class="label" data-reveal><span>08</span> Movimiento</p>
+          <p class="label" data-reveal><span>09</span> Movimiento</p>
           <h2 class="display" data-split>
             Ideas que no solo se ven: <em>se sienten</em>.
           </h2>
@@ -778,13 +884,9 @@
         <div class="phone" data-phone>
           <div class="phone__frame">
             <div class="phone__notch" aria-hidden="true"></div>
-            <video class="phone__video" autoplay muted loop playsinline poster="/media/reel-poster.jpg" aria-label="Reel de marca de MUSA">
+            <video class="phone__video" autoplay muted loop playsinline poster="/media/reel-poster.jpg" aria-label="Reel de marca de MUSA Design Lab">
               <source src="/media/reel.mp4" type="video/mp4" />
             </video>
-            <div class="phone__ui" aria-hidden="true">
-              <span>MUSA</span>
-              <span>Reel · 2026</span>
-            </div>
           </div>
           <span class="phone__glow" aria-hidden="true"></span>
         </div>
@@ -794,7 +896,7 @@
     <!-- ============================== VALORES =========================== -->
     <section class="section section--values" id="valores">
       <div class="section__head">
-        <p class="label" data-reveal><span>09</span> Valores</p>
+        <p class="label" data-reveal><span>10</span> Valores</p>
         <h2 class="display" data-split>
           Ocho valores, una forma de <em>trabajar</em>.
         </h2>
@@ -856,7 +958,7 @@
     <section class="section section--team" id="equipo">
       <div class="section__head section__head--split">
         <div>
-          <p class="label" data-reveal><span>10</span> El equipo</p>
+          <p class="label" data-reveal><span>11</span> El equipo</p>
           <h2 class="display" data-split>
             Tres miradas, una misma <em>visión</em>.
           </h2>
@@ -872,7 +974,7 @@
           <div class="team__media">
             <picture>
               <source srcset="/media/team-isabella.webp" type="image/webp" />
-              <img src="/media/team-isabella.jpg" alt="Retrato abstracto de Isabella Corredor, integrante de MUSA" loading="lazy" />
+              <img src="/media/team-isabella.jpg" alt="Retrato abstracto de Isabella Corredor, integrante de MUSA Design Lab" loading="lazy" />
             </picture>
             <span class="team__monogram" aria-hidden="true">IC</span>
           </div>
@@ -886,7 +988,7 @@
           <div class="team__media">
             <picture>
               <source srcset="/media/team-emilia.webp" type="image/webp" />
-              <img src="/media/team-emilia.jpg" alt="Retrato abstracto de Emilia Macias, integrante de MUSA" loading="lazy" />
+              <img src="/media/team-emilia.jpg" alt="Retrato abstracto de Emilia Macias, integrante de MUSA Design Lab" loading="lazy" />
             </picture>
             <span class="team__monogram" aria-hidden="true">EM</span>
           </div>
@@ -900,7 +1002,7 @@
           <div class="team__media">
             <picture>
               <source srcset="/media/team-elizabeth.webp" type="image/webp" />
-              <img src="/media/team-elizabeth.jpg" alt="Retrato abstracto de Elizabeth Román, integrante de MUSA" loading="lazy" />
+              <img src="/media/team-elizabeth.jpg" alt="Retrato abstracto de Elizabeth Román, integrante de MUSA Design Lab" loading="lazy" />
             </picture>
             <span class="team__monogram" aria-hidden="true">ER</span>
           </div>
@@ -913,7 +1015,7 @@
 
       <p class="team__note" data-reveal>
         <span class="star" aria-hidden="true">✦</span>
-        MUSA está conformada por tres integrantes que comparten una visión
+        MUSA Design Lab está conformada por tres integrantes que comparten una visión
         creativa y empresarial, y que trabajan conjuntamente para construir la
         empresa.
       </p>
@@ -923,7 +1025,7 @@
     <section class="contact" id="contacto">
       <div class="contact__glow" aria-hidden="true"></div>
       <div class="contact__inner">
-        <p class="label label--light" data-reveal><span>11</span> Contacto</p>
+        <p class="label label--light" data-reveal><span>12</span> Contacto</p>
         <h2 class="contact__title" data-split>
           Toda empresa tiene algo valioso que contar.
           <em>Hablemos de la tuya.</em>
@@ -943,8 +1045,8 @@
             </div>
             <div class="form__row">
               <div class="field">
-                <label for="f-email">Correo electrónico</label>
-                <input id="f-email" name="email" type="email" placeholder="tucorreo@empresa.com" autocomplete="email" required />
+                <label for="f-contacto">Tu WhatsApp o correo</label>
+                <input id="f-contacto" name="contacto" type="text" placeholder="Opcional: para responderte" autocomplete="email" />
               </div>
               <div class="field">
                 <label for="f-servicio">Me interesa</label>
@@ -966,27 +1068,34 @@
 
             <div class="form__foot">
               <button class="btn btn--solid btn--wide" type="submit" data-magnetic>
-                <span>Enviar mensaje</span>
+                <span>Enviar por WhatsApp</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </button>
               <p class="form__note" data-form-status>
-                Este formulario abre tu correo con el mensaje listo para enviar.
+                Abre WhatsApp con tu mensaje listo para enviar.
               </p>
             </div>
           </form>
 
           <aside class="contact__aside">
             <div class="contact__block">
-              <span class="contact__k">Escríbenos</span>
-              <a class="contact__mail" href="mailto:hola@musa.studio" data-email>hola@musa.studio</a>
+              <span class="contact__k">WhatsApp</span>
+              <div class="contact__wa">
+                <a class="contact__mail" href="#" data-wa="0" data-wa-message="Hola MUSA Design Lab, quiero información sobre sus servicios.">+57 321 382 7782</a>
+                <a href="#" data-wa="1">+57 321 417 9741</a>
+                <a href="#" data-wa="2">+57 322 749 7053</a>
+              </div>
             </div>
             <div class="contact__block">
               <span class="contact__k">Síguenos</span>
               <div class="contact__social">
                 <a href="#" data-social="instagram">Instagram <span aria-hidden="true">↗</span></a>
-                <a href="#" data-social="tiktok">TikTok <span aria-hidden="true">↗</span></a>
-                <a href="#" data-social="facebook">Facebook <span aria-hidden="true">↗</span></a>
+                <p class="contact__handle" data-insta-handle>@musa_designlab</p>
               </div>
+            </div>
+            <div class="contact__block">
+              <span class="contact__k">Ubicación</span>
+              <p data-city>Sogamoso, Boyacá</p>
             </div>
             <div class="contact__block">
               <span class="contact__k">Horario</span>
@@ -1004,14 +1113,14 @@
   <!-- ================================ FOOTER ============================= -->
   <footer class="footer">
     <div class="footer__top">
-      <div class="footer__brand">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 1.5c.7 12 9.8 21.1 21.8 21.8C33.8 24 24.7 33.1 24 45.1 23.3 33.1 14.2 24 2.2 23.3 14.2 22.6 23.3 13.5 24 1.5Z"/></svg>
-        <span>MUSA</span>
-      </div>
+      <a class="footer__brand" href="#inicio" aria-label="MUSA Design Lab, ir al inicio">
+        <img src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
+      </a>
       <nav class="footer__nav" aria-label="Navegación del pie">
         <a href="#estudio">Estudio</a>
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Proceso</a>
+        <a href="#paquetes">Paquetes</a>
         <a href="#portafolio">Universo</a>
         <a href="#equipo">Equipo</a>
         <a href="#contacto">Contacto</a>
@@ -1024,7 +1133,7 @@
     <div class="footer__word" aria-hidden="true"></div>
 
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> MUSA — Estudio creativo</p>
+      <p>© <span data-year>2026</span> MUSA Design Lab — <span data-city>Sogamoso, Boyacá</span></p>
       <p>Inspiración · Idea · Creatividad · Comunicación · Crecimiento</p>
       <p>Hecho con intención <span class="star" aria-hidden="true">✦</span></p>
     </div>

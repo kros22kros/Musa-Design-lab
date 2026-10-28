@@ -1,8 +1,9 @@
-# MUSA — Sitio web
+# MUSA Design Lab — Sitio web
 
-Sitio de una sola página para **MUSA**, estudio creativo de comunicación y
-presencia digital. Construido con Vite, JavaScript vanilla, GSAP y Lenis, con
-un universo visual generado a medida (imágenes y videos) para la marca.
+Sitio de una sola página para **MUSA Design Lab**, estudio creativo de
+comunicación y presencia digital en Sogamoso, Boyacá. Construido con Vite,
+JavaScript vanilla, GSAP y Lenis, con un universo visual generado a medida
+(imágenes y videos) para la marca.
 
 > **Dónde las ideas encuentran su voz.**
 
@@ -28,14 +29,14 @@ MUSA-Web/
 ├─ index.html               # Todo el contenido y la semántica del sitio
 ├─ public/
 │  ├─ media/                # Imágenes y videos generados (jpg, webp, mp4)
-│  ├─ favicon.svg
+│  │  └─ brand/             # Logotipo, lockups, favicon y marca de agua
 │  ├─ grain.png
 │  ├─ og-image.jpg
 │  ├─ robots.txt
 │  └─ sitemap.xml
 ├─ src/
 │  ├─ main.js               # Arranque, orden de módulos y preloader
-│  ├─ data/site.js          # ⚠️ Correo y redes sociales editables
+│  ├─ data/site.js          # ⚠️ WhatsApp, Instagram y ciudad editables
 │  ├─ js/
 │  │  ├─ smooth.js          # Lenis + anclas internas
 │  │  ├─ preloader.js       # Cortina de entrada (con failsafe)
@@ -47,16 +48,19 @@ MUSA-Web/
 │  │  ├─ gallery.js         # Filtros + lightbox accesible
 │  │  ├─ video.js           # Showreel y videos ambientales
 │  │  ├─ menu.js            # Menú móvil
-│  │  ├─ form.js            # Validación + mailto
-│  │  ├─ social.js          # Inyecta correo, redes y año
+│  │  ├─ form.js            # Validación + mensaje de WhatsApp
+│  │  ├─ social.js          # Inyecta WhatsApp, Instagram, ciudad y año
 │  │  └─ cursor.js          # Cursor personalizado
 │  └─ styles/
-│     ├─ tokens.css         # Color, tipografía, layout, motion
+│     ├─ tokens.css         # Paleta de marca, tipografía, layout, motion
 │     ├─ base.css           # Reset, tipografía, botones, preloader
 │     ├─ chrome.css         # Nav, menú, footer, lightbox
 │     ├─ sections.css       # Secciones del sitio
 │     └─ responsive.css     # Ajustes por breakpoint
-└─ tools/generate_assets.py # Generador reproducible de todo el media
+└─ tools/
+   ├─ prepare_brand.py      # Extrae el logotipo original y arma los lockups
+   ├─ generate_assets.py    # Generador reproducible de todo el media
+   └─ source/               # JPEG originales de marca, paleta y paquetes
 ```
 
 ---
@@ -74,6 +78,40 @@ Requiere **Node 22.12+** (ver `.nvmrc`).
 
 ---
 
+## Marca
+
+La identidad parte de los archivos entregados por el estudio:
+
+- **Logotipo:** `tools/source/musa-logotipo.jpeg`, con tipografía negra sobre
+  azul plano. `tools/prepare_brand.py` separa el trazo por luminancia del canal
+  rojo, lo recolorea y arma los lockups:
+  - `logo-stacked-{dark,light}.png` — MUSA sobre *Design Lab* (nav y pie).
+  - `logo-horizontal-{dark,light}.png` — lockup horizontal (marca de agua).
+  - `logo-script-{dark,light}.png` — solo *Design Lab* (sección El nombre).
+  - `favicon.png` — monograma M en vino sobre marfil.
+- **Paleta:** `tools/source/paleta-musa.jpeg`. Tokens en `src/styles/tokens.css`:
+
+  | Token | Hex | Uso |
+  | --- | --- | --- |
+  | `--wine` | `#80231e` | Acento principal, paquetes |
+  | `--wine-deep` | `#2b0d10` | Fondos oscuros |
+  | `--blue` | `#67768d` | Acento secundario |
+  | `--blue-deep` | `#17253a` | Paquete Impulso |
+  | `--blue-light` | `#d3d9e7` | Texto y detalles sobre oscuro |
+  | `--sky` | `#8aa9c5` | Azul del logotipo original |
+  | `--bone` | `#ece9dc` | Fondo claro principal |
+  | `--bone-2` / `--cream` | `#e2dfd0` / `#f7f5ec` | Variaciones de fondo |
+  | `--ink` | `#0c0b0b` | Texto y fondos negros |
+
+Para regenerar los lockups:
+
+```bash
+pip install pillow numpy
+python tools/prepare_brand.py
+```
+
+---
+
 ## Contenido editable
 
 Todo el copy vive en `index.html`. Los datos de contacto están centralizados:
@@ -81,19 +119,38 @@ Todo el copy vive en `index.html`. Los datos de contacto están centralizados:
 ```js
 // src/data/site.js
 export const site = {
-  email: "hola@musa.studio",              // ← correo real
-  social: {
-    instagram: "https://www.instagram.com/", // ← perfil real
-    tiktok: "https://www.tiktok.com/",
-    facebook: "https://www.facebook.com/",
+  name: "MUSA Design Lab",
+  city: "Sogamoso, Boyacá",
+  instagram: {
+    handle: "musa_designlab",
+    url: "https://www.instagram.com/musa_designlab",
   },
+  whatsapp: [
+    { number: "573213827782", display: "+57 321 382 7782" }, // principal
+    { number: "573214179741", display: "+57 321 417 9741" },
+    { number: "573227497053", display: "+57 322 749 7053" },
+  ],
 };
 ```
 
-El formulario no usa backend: valida los campos y abre el gestor de correo con
-el mensaje preparado (`mailto:`). Si más adelante se quiere un envío real, se
-puede sustituir el bloque de `mailto` en `src/js/form.js` por Formspree, Resend
-o una función serverless de Vercel.
+Los enlaces del sitio se hidratan con atributos:
+
+- `[data-wa="0|1|2"]` — abre WhatsApp con el número correspondiente.
+  `data-wa-message` precarga el mensaje (por ejemplo, el paquete elegido).
+- `[data-social="instagram"]` — perfil de Instagram.
+- `[data-insta-handle]`, `[data-city]`, `[data-year]` — textos dinámicos.
+
+El formulario no usa backend: valida los campos y abre WhatsApp con el mensaje
+preparado. Si más adelante se quiere un envío real, se puede sustituir el bloque
+de `window.open` en `src/js/form.js` por Formspree, Resend o una función
+serverless de Vercel.
+
+### Paquetes
+
+La sección «Paquetes» (07) presenta tres propuestas — **Esencial** ($300.000),
+**Impulso** ($450.000, destacado) e **Identidad** ($900.000), en COP. Cada CTA
+abre WhatsApp con el nombre del paquete en el mensaje. El detalle vive en
+`index.html`; los estilos, en `.packages` dentro de `src/styles/sections.css`.
 
 ### Dominio y metadatos
 
@@ -111,11 +168,11 @@ Todas las imágenes y videos son originales y se generan por código, sin bancos
 de imágenes ni licencias externas:
 
 - 6 piezas editoriales del portafolio (1200×1500) en `.jpg` y `.webp`.
-- 3 placas abstractas del equipo (1000×1250) en `.jpg` y `.webp`.
+- 3 placas abstractas del equipo (1000×1250) en `.jpg` y `.webp`, con el
+  logotipo real.
 - `hero.mp4` (10 s), `reel.mp4` (8 s vertical) y `showreel.mp4` (16 s) con sus
   posters.
-- `og-image.jpg` (1200×630), `footer-musa.png` (marca de agua del pie),
-  `grain.png` y `favicon.svg`.
+- `og-image.jpg` (1200×630) con el logotipo, `grain.png` y el favicon de marca.
 
 Para regenerarlos:
 
@@ -126,6 +183,8 @@ python tools/generate_assets.py
 
 El script usa las fuentes de `tools/fonts/` y `ffmpeg` incluido en
 `imageio-ffmpeg`. Tarda unos minutos porque renderiza los videos cuadro a cuadro.
+Conviene ejecutar `tools/prepare_brand.py` antes, porque las placas del equipo y
+la imagen Open Graph usan los lockups de `public/media/brand/`.
 
 ---
 
@@ -167,9 +226,9 @@ vercel --prod   # producción
 ## Portafolio
 
 Las piezas de la sección «Universo visual» son **trabajos conceptuales** creados
-para explorar la identidad de MUSA, no proyectos de clientes. El sitio lo indica
-explícitamente para evitar atribuciones falsas.
+para explorar la identidad de MUSA Design Lab, no proyectos de clientes. El sitio
+lo indica explícitamente para evitar atribuciones falsas.
 
 ---
 
-© 2026 MUSA — Isabella Corredor, Emilia Macias, Elizabeth Román.
+© 2026 MUSA Design Lab — Isabella Corredor, Emilia Macias, Elizabeth Román.

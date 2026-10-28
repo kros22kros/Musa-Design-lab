@@ -20,7 +20,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: var(--gold-light);
+  background: var(--blue-light);
   transform: scaleY(0);
   transform-origin: top center;
 }
@@ -49,13 +49,13 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to bottom, rgba(23, 18, 15, 0.45), transparent);
+  background: linear-gradient(to bottom, rgba(12, 11, 11, 0.45), transparent);
   transition: opacity 0.5s ease;
 }
 
 .nav.is-scrolled {
   height: 70px;
-  background: rgba(244, 237, 226, 0.88);
+  background: rgba(236, 233, 220, 0.88);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   color: var(--ink);
@@ -79,30 +79,41 @@
 }
 
 .nav__brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 50px;
   flex-shrink: 0;
 }
 
-.nav__mark {
-  width: 16px;
-  height: 16px;
-  fill: var(--gold-light);
-  transition: transform 0.7s var(--ease);
+.nav__logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  transition: opacity 0.4s var(--ease);
 }
 
-.nav__brand:hover .nav__mark {
-  transform: rotate(90deg);
+.nav__logo--dark {
+  opacity: 0;
 }
 
-.nav__brand span {
-  font-family: var(--serif);
-  font-size: 1.22rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  padding-left: 0.3em;
-  line-height: 1;
+.nav.is-scrolled .nav__logo--light {
+  opacity: 0;
+}
+
+.nav.is-scrolled .nav__logo--dark {
+  opacity: 1;
+}
+
+.nav.is-menu .nav__logo--light {
+  opacity: 1;
+}
+
+.nav.is-menu .nav__logo--dark {
+  opacity: 0;
 }
 
 .nav__links {
@@ -275,11 +286,11 @@
   font-family: var(--sans);
   font-size: 0.58rem;
   letter-spacing: 0.14em;
-  color: var(--gold);
+  color: var(--blue);
 }
 
 .menu__links a:hover {
-  color: var(--gold-light);
+  color: var(--blue-light);
   padding-left: 0.5rem;
 }
 
@@ -315,7 +326,7 @@
 }
 
 .menu__social a:hover {
-  color: var(--gold-light);
+  color: var(--blue-light);
 }
 
 /* ---------------- Footer ---------------- */
@@ -337,17 +348,13 @@
 }
 
 .footer__brand {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  letter-spacing: 0.3em;
+  display: block;
+  width: 84px;
 }
 
-.footer__brand svg {
-  width: 16px;
-  fill: var(--gold);
+.footer__brand img {
+  width: 100%;
+  height: auto;
 }
 
 .footer__nav {
@@ -365,7 +372,7 @@
 }
 
 .footer__nav a:hover {
-  color: var(--gold-light);
+  color: var(--blue-light);
 }
 
 .footer__up {
@@ -397,8 +404,8 @@
   width: min(100%, 1180px);
   height: clamp(4rem, 13.5vw, 13.5rem);
   margin: clamp(2rem, 4vw, 3.5rem) auto;
-  background: url("/media/footer-musa.png") center / contain no-repeat;
-  opacity: 0.07;
+  background: url("/media/brand/watermark.png") center / contain no-repeat;
+  opacity: 0.06;
   pointer-events: none;
   user-select: none;
 }
@@ -418,7 +425,7 @@
 }
 
 .footer__bottom .star {
-  color: var(--gold);
+  color: var(--blue);
 }
 
 /* ---------------- Lightbox ---------------- */
@@ -431,7 +438,7 @@
   align-items: center;
   gap: 1rem;
   padding: clamp(1rem, 4vw, 3rem);
-  background: rgba(20, 15, 12, 0.97);
+  background: rgba(12, 11, 11, 0.97);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   color: var(--bone);

@@ -1,7 +1,7 @@
-import { site } from "../data/site.js";
+import { site, whatsappLink } from "../data/site.js";
 
 /**
- * Formulario sin backend: valida y abre el correo del usuario con el
+ * Formulario sin backend: valida los campos y abre WhatsApp con el
  * mensaje preparado. Si más adelante se conecta un servicio (Formspree,
  * Resend, etc.) solo hay que sustituir este bloque.
  */
@@ -11,6 +11,7 @@ export function initForm() {
 
   const status = form.querySelector("[data-form-status]");
   const submit = form.querySelector('button[type="submit"]');
+  const primary = site.whatsapp[0];
 
   const setStatus = (message, type) => {
     if (!status) return;
@@ -29,25 +30,23 @@ export function initForm() {
     }
 
     const data = Object.fromEntries(new FormData(form).entries());
-    const subject = `Nuevo proyecto — ${data.empresa || data.nombre}`;
     const body = [
-      `Nombre: ${data.nombre}`,
-      `Empresa: ${data.empresa || "—"}`,
-      `Correo: ${data.email}`,
-      `Servicio de interés: ${data.servicio || "—"}`,
+      `Hola MUSA Design Lab, soy ${data.nombre}.`,
+      data.empresa ? `Empresa: ${data.empresa}` : "",
+      data.contacto ? `Contacto: ${data.contacto}` : "",
+      `Me interesa: ${data.servicio || "asesoría general"}`,
       "",
-      "Mensaje:",
       data.mensaje,
-    ].join("\n");
+    ]
+      .filter(Boolean)
+      .join("\n");
 
-    const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
+    const url = whatsappLink(body, primary.number);
+    const opened = window.open(url, "_blank", "noopener,noreferrer");
+    if (!opened) window.location.href = url;
 
     setStatus(
-      `Abrimos tu gestor de correo con el mensaje listo. Si no se abrió, escríbenos a ${site.email}.`,
+      `Abrimos WhatsApp con el mensaje listo. Si no se abrió, escríbenos al ${primary.display}.`,
       "is-success"
     );
 
@@ -66,7 +65,7 @@ export function initForm() {
   form.querySelectorAll("input, textarea, select").forEach((field) => {
     field.addEventListener("input", () => {
       if (status?.classList.contains("is-error")) {
-        setStatus("Este formulario abre tu correo con el mensaje listo para enviar.", null);
+        setStatus("Este formulario abre WhatsApp con tu mensaje listo para enviar.", null);
       }
     });
   });

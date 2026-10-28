@@ -160,6 +160,10 @@
     grid-column: 1 / -1;
     margin-top: 0;
   }
+
+  .packages__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ---------------------------- 900px ---------------------------- */
@@ -376,6 +380,20 @@
     gap: 1.6rem;
   }
 
+  .package {
+    padding: 1.45rem;
+  }
+
+  .packages__grid {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+  }
+
+  .package__badge {
+    top: 1rem;
+    right: 1rem;
+  }
+
   .form__foot {
     flex-direction: column;
     align-items: flex-start;
@@ -434,7 +452,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #b49a82;
+    background: var(--blue);
     border: 3px solid var(--bone);
     border-radius: 10px;
   }

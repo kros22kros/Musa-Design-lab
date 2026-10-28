@@ -394,14 +394,11 @@
 }
 
 .footer__word {
-  margin: clamp(2rem, 4vw, 3.5rem) 0;
-  font-family: var(--serif);
-  font-size: clamp(6rem, 20vw, 20rem);
-  font-weight: 400;
-  line-height: 0.7;
-  letter-spacing: 0.06em;
-  text-align: center;
-  color: rgba(244, 237, 226, 0.07);
+  width: min(100%, 1180px);
+  height: clamp(4rem, 13.5vw, 13.5rem);
+  margin: clamp(2rem, 4vw, 3.5rem) auto;
+  background: url("/media/footer-musa.png") center / contain no-repeat;
+  opacity: 0.07;
   pointer-events: none;
   user-select: none;
 }

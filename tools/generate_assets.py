@@ -720,6 +720,22 @@ def grain_tile(path: Path):
     Image.fromarray(arr, "RGBA").save(path, optimize=True)
 
 
+def footer_wordmark(path: Path, word="MUSA", size=640):
+    """Marca de agua tipográfica del pie, como PNG recortado (decorativa)."""
+    face = font(SERIF, size, "Light")
+    tracking = size * 0.06
+    widths = [face.getlength(ch) for ch in word]
+    total = sum(widths) + tracking * (len(word) - 1)
+    pad = 40
+    canvas = Image.new("RGBA", (int(total) + pad * 2, int(size * 1.02)), (0, 0, 0, 0))
+    d = ImageDraw.Draw(canvas)
+    x = pad
+    for ch, w in zip(word, widths):
+        d.text((x, pad + size * 0.80), ch, font=face, fill=IVORY + (255,), anchor="ls")
+        x += w + tracking
+    canvas.crop(canvas.getbbox()).save(path, optimize=True)
+
+
 # ----------------------------------------------------------------------------
 def main():
     MEDIA.mkdir(parents=True, exist_ok=True)
@@ -747,6 +763,7 @@ def main():
     print("→ Generando imagen Open Graph y textura...")
     og_image(OUT / "og-image.jpg")
     grain_tile(OUT / "grain.png")
+    footer_wordmark(MEDIA / "footer-musa.png")
 
     print("→ Renderizando loop del hero (10s)...")
     hero_video(MEDIA / "hero.mp4", MEDIA / "hero-poster.jpg")

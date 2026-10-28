@@ -114,7 +114,8 @@ de imágenes ni licencias externas:
 - 3 placas abstractas del equipo (1000×1250) en `.jpg` y `.webp`.
 - `hero.mp4` (10 s), `reel.mp4` (8 s vertical) y `showreel.mp4` (16 s) con sus
   posters.
-- `og-image.jpg` (1200×630), `grain.png` y `favicon.svg`.
+- `og-image.jpg` (1200×630), `footer-musa.png` (marca de agua del pie),
+  `grain.png` y `favicon.svg`.
 
 Para regenerarlos:
 

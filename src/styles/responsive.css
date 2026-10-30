@@ -55,8 +55,8 @@
     flex-direction: column;
   }
 
-  .meaning__word {
-    font-size: clamp(5rem, 23vw, 12rem);
+  .meaning__mark {
+    width: clamp(190px, 34vw, 340px);
   }
 
   .meaning__grid {
@@ -211,8 +211,8 @@
     width: 62vw;
   }
 
-  .meaning__word {
-    -webkit-text-stroke-width: 1px;
+  .meaning__mark {
+    width: clamp(200px, 52vw, 280px);
   }
 }
 
@@ -238,7 +238,7 @@
   }
 
   .hero__title {
-    font-size: clamp(3rem, 13vw, 4.6rem);
+    font-size: clamp(2.9rem, 11.5vw, 4.6rem);
     line-height: 0.92;
   }
 
@@ -340,21 +340,43 @@
   }
 
   .showreel {
-    aspect-ratio: 4 / 5;
-  }
-
-  .showreel__play {
-    flex-direction: column;
-    gap: 0.9rem;
-    text-align: center;
-  }
-
-  .showreel__play-text {
-    text-align: center;
+    aspect-ratio: 16 / 9;
   }
 
   .showreel__caption {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+  }
+
+  .showreel__overlay {
+    padding: 0.9rem 1rem;
+  }
+
+  .showreel__label {
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+  }
+
+  .showreel__play {
+    gap: 0.7rem;
+    padding: 0.35rem 0.9rem 0.35rem 0.35rem;
+  }
+
+  .showreel__play-icon {
+    width: 44px;
+  }
+
+  .showreel__play-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .showreel__play-text {
+    font-size: 0.58rem;
+  }
+
+  .showreel__play-text small {
+    margin-top: 0.18rem;
+    font-size: 0.5rem;
   }
 
   .phone__frame {
@@ -438,6 +460,19 @@
 
   .contact__mail {
     font-size: 1.2rem;
+  }
+}
+
+/* ---------------------------- 380px / 340px ---------------------------- */
+@media (max-width: 380px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero__title {
+    font-size: 2.2rem;
   }
 }
 

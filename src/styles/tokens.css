@@ -24,9 +24,9 @@
   --line-light: rgba(236, 233, 220, 0.18);
   --line-light-strong: rgba(236, 233, 220, 0.34);
 
-  /* Type */
-  --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
-  --sans: "Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Type — Georgia en toda la página */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: Georgia, "Times New Roman", serif;
 
   /* Layout */
   --pad: clamp(1.25rem, 4.4vw, 5.5rem);

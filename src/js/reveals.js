@@ -142,7 +142,6 @@ export function initReveals(reduced = false) {
  */
 export function initScrollUI() {
   const nav = document.querySelector("#nav");
-  const progress = document.querySelector(".scroll-progress span");
   const marquee = document.querySelector("[data-marquee-track]");
 
   let marqueeTween = null;
@@ -159,9 +158,6 @@ export function initScrollUI() {
     start: 0,
     end: "max",
     onUpdate: (self) => {
-      if (progress) {
-        gsap.set(progress, { scaleY: self.progress });
-      }
       nav?.classList.toggle("is-scrolled", self.scroll() > 90);
 
       if (marqueeTween) {

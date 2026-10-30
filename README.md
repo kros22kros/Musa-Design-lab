@@ -15,7 +15,7 @@ JavaScript vanilla, GSAP y Lenis, con un universo visual generado a medida
 - **GSAP + ScrollTrigger** — animaciones, pin horizontal, reveals y parallax.
 - **Lenis** — scroll suave sincronizado con ScrollTrigger.
 - **SplitType** — titulares partidos por líneas.
-- **@fontsource** — Cormorant Garamond y Jost autoalojadas (sin Google Fonts).
+- **Tipografía Georgia** del sistema, sin webfonts ni peticiones externas.
 - **CSS moderno** — custom properties, `clamp()`, grid, `svh`, `prefers-reduced-motion`.
 
 Sin frameworks de UI y sin dependencias de imágenes de stock.
@@ -47,6 +47,7 @@ MUSA-Web/
 │  │  ├─ tabs.js            # Propósito / Misión / Visión
 │  │  ├─ gallery.js         # Filtros + lightbox accesible
 │  │  ├─ video.js           # Showreel y videos ambientales
+│  │  ├─ thread.js          # Hilo de luz que acompaña el scroll
 │  │  ├─ menu.js            # Menú móvil
 │  │  ├─ form.js            # Validación + mensaje de WhatsApp
 │  │  ├─ social.js          # Inyecta WhatsApp, Instagram, ciudad y año
@@ -164,27 +165,34 @@ Cuando exista el dominio definitivo, actualizar:
 
 ## Universo visual
 
-Todas las imágenes y videos son originales y se generan por código, sin bancos
-de imágenes ni licencias externas:
+Las piezas editoriales, placas y texturas son originales y se generan por código,
+sin bancos de imágenes ni licencias externas. El showreel y el reel vertical se
+derivan del video de marca del estudio:
 
 - 6 piezas editoriales del portafolio (1200×1500) en `.jpg` y `.webp`.
 - 3 placas abstractas del equipo (1000×1250) en `.jpg` y `.webp`, con el
   logotipo real.
-- `hero.mp4` (10 s), `reel.mp4` (8 s vertical) y `showreel.mp4` (16 s) con sus
-  posters.
+- `musa-showreel.mp4` (8 s, 16:9, con audio) y `musa-reel.mp4` (8 s, 9:16,
+  silencioso) con sus posters, derivados de `VIDEO DE MUSA.mp4`.
 - `og-image.jpg` (1200×630) con el logotipo, `grain.png` y el favicon de marca.
 
-Para regenerarlos:
+Para regenerar las piezas y placas:
 
 ```bash
 pip install pillow numpy imageio-ffmpeg
 python tools/generate_assets.py
 ```
 
-El script usa las fuentes de `tools/fonts/` y `ffmpeg` incluido en
-`imageio-ffmpeg`. Tarda unos minutos porque renderiza los videos cuadro a cuadro.
-Conviene ejecutar `tools/prepare_brand.py` antes, porque las placas del equipo y
-la imagen Open Graph usan los lockups de `public/media/brand/`.
+Los videos del sitio se derivan del video de marca original:
+
+```bash
+python tools/prepare_video.py
+```
+
+Ambos scripts usan las fuentes de `tools/fonts/` y el `ffmpeg` incluido en
+`imageio-ffmpeg`. Conviene ejecutar `tools/prepare_brand.py` antes, porque las
+placas del equipo y la imagen Open Graph usan los lockups de
+`public/media/brand/`.
 
 ---
 
@@ -218,7 +226,7 @@ vercel --prod   # producción
 - Respeta `prefers-reduced-motion`: sin preloader, sin animaciones y contenido
   siempre visible.
 - Imágenes con `width`/`height` o `aspect-ratio`, `loading="lazy"` y `<picture>`
-  con WebP. Fuentes autoalojadas y subset latin.
+  con WebP. Tipografía Georgia del sistema, sin descargas de fuentes.
 - El preloader tiene un failsafe de 7 s para pestañas en segundo plano.
 
 ---

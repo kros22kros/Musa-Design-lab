@@ -10,7 +10,7 @@ extrae el trazo por luminancia (canal rojo) y se recolorea a tinta o marfil.
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "tools" / "source" / "musa-logotipo.jpeg"
@@ -25,10 +25,20 @@ BLUE = (103, 118, 141)
 def extract() -> Image.Image:
     img = Image.open(SRC).convert("RGB")
     arr = np.asarray(img).astype(np.float32)
-    bg_r = 0x8A  # fondo azul del original
-    alpha = np.clip((bg_r - arr[:, :, 0]) / bg_r, 0, 1)
-    alpha[alpha < 0.06] = 0
-    alpha = np.clip((alpha - 0.06) / 0.94, 0, 1)
+    lum = arr[:, :, 0] * 0.299 + arr[:, :, 1] * 0.587 + arr[:, :, 2] * 0.114
+    # El fondo azul del original no es perfectamente plano: tomamos su
+    # luminancia del borde superior para no dejar un halo alrededor del trazo.
+    bg = float(np.median(lum[:12, :]))
+    alpha = np.clip((bg - lum) / bg, 0, 1)
+    # Niveles + enfoque: recupera el filo de las astas finas del logotipo,
+    # que en el JPEG original llegan suavizadas por la compresión.
+    alpha = np.clip((alpha - 0.045) / 0.88, 0, 1)
+    mask = Image.fromarray((alpha * 255).round().astype(np.uint8), "L")
+    mask = mask.filter(ImageFilter.UnsharpMask(radius=1.1, percent=180, threshold=2))
+    alpha = np.asarray(mask).astype(np.float32) / 255
+    # Cierre de bordes: deja el contorno definido sin escalones duros.
+    alpha = np.clip((alpha - 0.10) / 0.72, 0, 1)
+    alpha[alpha < 0.015] = 0
     return Image.fromarray((alpha * 255).round().astype(np.uint8), "L")
 
 
@@ -101,14 +111,17 @@ def main():
         pad(trim(stacked), 18).save(OUT / f"logo-stacked-{name}.png", optimize=True)
 
         # Horizontal: MUSA + Design Lab a la derecha, apoyado en la base.
-        scale = 0.40
+        scale = 0.55
         script_small = script.resize(
             (max(1, int(script.width * scale)), max(1, int(script.height * scale))),
             Image.LANCZOS,
         )
-        lockup = hstack([musa, script_small], gap=int(musa.height * 0.16), align="bottom")
+        lockup = hstack([musa, script_small], gap=int(musa.height * 0.15), align="bottom")
         pad(trim(lockup), 14).save(OUT / f"logo-horizontal-{name}.png", optimize=True)
         pad(script, 10).save(OUT / f"logo-script-{name}.png", optimize=True)
+        # Wordmark suelto: solo las letras oficiales de MUSA, para los grandes
+        # titulares de marca de la página.
+        pad(trim(musa), 10).save(OUT / f"wordmark-{name}.png", optimize=True)
 
     # Monograma para favicon: primera letra del lockup.
     letters = bands(musa_mask.transpose(Image.Transpose.TRANSPOSE))  # columnas -> letras

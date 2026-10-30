@@ -19,14 +19,22 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background:
+    radial-gradient(56% 52% at 76% 26%, rgba(128, 35, 30, 0.36), transparent 72%),
+    radial-gradient(50% 46% at 10% 84%, rgba(23, 37, 58, 0.5), transparent 72%),
+    radial-gradient(110% 90% at 50% 45%, #151213 0%, #0c0b0b 68%);
 }
 
-.hero__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.06);
-  filter: saturate(0.92) contrast(1.04);
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(211, 217, 231, 0.045) 49%,
+    transparent 52%
+  );
 }
 
 .hero__veil {
@@ -35,14 +43,14 @@
   background:
     linear-gradient(
       180deg,
-      rgba(12, 11, 11, 0.62) 0%,
-      rgba(12, 11, 11, 0.18) 34%,
-      rgba(12, 11, 11, 0.36) 62%,
-      rgba(12, 11, 11, 0.94) 100%
+      rgba(12, 11, 11, 0.55) 0%,
+      rgba(12, 11, 11, 0.04) 30%,
+      rgba(12, 11, 11, 0.12) 62%,
+      rgba(12, 11, 11, 0.92) 100%
     ),
     radial-gradient(
       70% 60% at 72% 38%,
-      rgba(128, 35, 30, 0.2),
+      rgba(128, 35, 30, 0.1),
       transparent 70%
     );
 }
@@ -55,6 +63,11 @@
   aspect-ratio: 1;
   border: 1px solid rgba(211, 217, 231, 0.16);
   border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(211, 217, 231, 0.08),
+    transparent 62%
+  );
   pointer-events: none;
 }
 
@@ -387,21 +400,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(0.2rem, 0.5vw, 0.5rem);
-  font-family: var(--serif);
-  font-size: clamp(6rem, 19vw, 17rem);
-  font-weight: 400;
-  line-height: 0.68;
-  letter-spacing: 0.04em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(211, 217, 231, 0.38);
+  gap: clamp(0.4rem, 0.8vw, 0.9rem);
   user-select: none;
 }
 
-.meaning__word img {
-  width: clamp(110px, 15vw, 250px);
+.meaning__mark {
+  width: clamp(200px, 32vw, 460px);
   height: auto;
-  opacity: 0.9;
+  opacity: 0.94;
+}
+
+.meaning__script {
+  width: clamp(90px, 12vw, 168px);
+  height: auto;
+  opacity: 0.82;
 }
 
 .meaning__grid {
@@ -1378,11 +1390,18 @@
   flex-direction: column;
   justify-content: space-between;
   padding: clamp(1.1rem, 2.4vw, 2rem);
-  background: linear-gradient(
-    to top,
-    rgba(12, 11, 11, 0.68),
-    rgba(12, 11, 11, 0.1) 60%
-  );
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(12, 11, 11, 0.55),
+      transparent 24%
+    ),
+    linear-gradient(
+      to top,
+      rgba(12, 11, 11, 0.85),
+      rgba(12, 11, 11, 0.34) 30%,
+      transparent 62%
+    );
   color: var(--bone);
   transition: opacity 0.6s var(--ease);
 }
@@ -1396,7 +1415,9 @@
   font-size: 0.6rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--muted-light);
+  color: var(--bone);
+  opacity: 0.82;
+  text-shadow: 0 1px 14px rgba(12, 11, 11, 0.75);
 }
 
 .showreel__play {
@@ -1405,21 +1426,31 @@
   left: 50%;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.1rem;
+  padding: 0.55rem 1.5rem 0.55rem 0.55rem;
+  border: 1px solid rgba(236, 233, 220, 0.22);
+  border-radius: 999px;
+  background: rgba(12, 11, 11, 0.46);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   transform: translate(-50%, -50%);
   color: var(--bone);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.showreel__play:hover {
+  background: rgba(12, 11, 11, 0.62);
+  border-color: rgba(236, 233, 220, 0.45);
 }
 
 .showreel__play-icon {
   display: grid;
   place-items: center;
-  width: clamp(64px, 7vw, 92px);
+  width: clamp(56px, 5.6vw, 74px);
   aspect-ratio: 1;
-  border: 1px solid rgba(236, 233, 220, 0.5);
+  border: 1px solid rgba(236, 233, 220, 0.38);
   border-radius: 50%;
-  background: rgba(12, 11, 11, 0.2);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  background: rgba(236, 233, 220, 0.1);
   transition: background-color 0.4s ease, border-color 0.4s ease,
     transform 0.5s var(--ease);
 }
@@ -1442,6 +1473,8 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: left;
+  white-space: nowrap;
+  text-shadow: 0 1px 14px rgba(12, 11, 11, 0.75);
 }
 
 .showreel__play-text small {

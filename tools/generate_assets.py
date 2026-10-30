@@ -3,13 +3,14 @@ MUSA - Generador de universo visual
 ====================================
 Crea, sin bancos de imágenes ni licencias externas, todas las piezas
 visuales del sitio: arte editorial, retratos abstractos del equipo,
-texturas, imágenes Open Graph y loops de video.
+texturas e imágenes Open Graph. Los videos se derivan aparte con
+`tools/prepare_video.py`.
 
 Uso:
     python tools/generate_assets.py
 
 Salida:
-    public/media/*.jpg|webp|mp4
+    public/media/*.jpg|webp
     public/og-image.jpg
     public/grain.png
 """
@@ -764,13 +765,6 @@ def main():
     print("→ Generando imagen Open Graph y textura...")
     og_image(OUT / "og-image.jpg")
     grain_tile(OUT / "grain.png")
-
-    print("→ Renderizando loop del hero (10s)...")
-    hero_video(MEDIA / "hero.mp4", MEDIA / "hero-poster.jpg")
-    print("→ Renderizando reel vertical (8s)...")
-    reel_video(MEDIA / "reel.mp4", MEDIA / "reel-poster.jpg")
-    print("→ Renderizando showreel (16s)...")
-    showreel(MEDIA / "showreel.mp4", MEDIA / "showreel-poster.jpg")
 
     print("\n✓ Universo visual generado en public/")
     total = sum(f.stat().st_size for f in MEDIA.rglob("*") if f.is_file())

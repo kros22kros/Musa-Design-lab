@@ -2,27 +2,62 @@
    MUSA — Navegación, menú, progreso, footer y lightbox
    ============================================================ */
 
-/* ---------------- Barra de progreso de lectura ---------------- */
-.scroll-progress {
+/* ---------------- Hilo de luz ---------------- */
+.thread {
   position: fixed;
-  top: 50%;
-  right: clamp(10px, 1.4vw, 22px);
-  z-index: 700;
-  width: 1px;
-  height: 110px;
-  transform: translateY(-50%);
-  background: var(--line-light-strong);
-  mix-blend-mode: difference;
+  top: 0;
+  right: clamp(2px, 1vw, 16px);
+  z-index: 6;
+  width: clamp(46px, 5.5vw, 96px);
+  height: 100vh;
   pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease) 0.3s;
 }
 
-.scroll-progress span {
-  display: block;
+html.is-ready .thread {
+  opacity: 1;
+}
+
+.thread__svg {
   width: 100%;
   height: 100%;
-  background: var(--blue-light);
-  transform: scaleY(0);
-  transform-origin: top center;
+  overflow: visible;
+}
+
+.thread__base,
+.thread__trace {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.thread__base {
+  stroke: rgba(236, 233, 220, 0.32);
+  stroke-width: 1;
+}
+
+.thread__trace {
+  stroke: url("#thread-gradient");
+  stroke-width: 1.4;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.thread__spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--bone);
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
+  box-shadow:
+    0 0 0 1px rgba(236, 233, 220, 0.42),
+    0 0 10px 2px rgba(211, 217, 231, 0.45),
+    0 0 24px 8px rgba(138, 169, 197, 0.18);
 }
 
 /* ---------------- Navegación ---------------- */
@@ -81,9 +116,14 @@
 .nav__brand {
   position: relative;
   display: block;
-  width: 72px;
-  height: 50px;
+  width: clamp(150px, 14.5vw, 210px);
+  aspect-ratio: 698 / 202;
   flex-shrink: 0;
+  transition: width 0.5s var(--ease);
+}
+
+.nav.is-scrolled .nav__brand {
+  width: clamp(132px, 12vw, 180px);
 }
 
 .nav__logo {
@@ -290,6 +330,12 @@
 }
 
 .menu__links a:hover {
+  color: var(--blue-light);
+  padding-left: 0.5rem;
+}
+
+.menu__links a:focus-visible {
+  outline: none;
   color: var(--blue-light);
   padding-left: 0.5rem;
 }
@@ -522,6 +568,11 @@
 }
 
 @media (max-width: 1024px) {
+  .thread {
+    width: 40px;
+    right: 6px;
+  }
+
   .nav__links {
     display: none;
   }
@@ -537,8 +588,17 @@
 }
 
 @media (max-width: 640px) {
-  .scroll-progress {
-    display: none;
+  .thread {
+    width: 28px;
+    right: 0;
+  }
+
+  .nav__brand {
+    width: 156px;
+  }
+
+  .nav.is-scrolled .nav__brand {
+    width: 136px;
   }
 
   .lightbox {

@@ -1,12 +1,3 @@
-import "@fontsource/cormorant-garamond/latin-300.css";
-import "@fontsource/cormorant-garamond/latin-400.css";
-import "@fontsource/cormorant-garamond/latin-500.css";
-import "@fontsource/cormorant-garamond/latin-300-italic.css";
-import "@fontsource/cormorant-garamond/latin-400-italic.css";
-import "@fontsource/jost/latin-300.css";
-import "@fontsource/jost/latin-400.css";
-import "@fontsource/jost/latin-500.css";
-
 import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/chrome.css";
@@ -28,6 +19,7 @@ import { initTabs } from "./js/tabs.js";
 import { initGallery } from "./js/gallery.js";
 import { initVideos } from "./js/video.js";
 import { initForm } from "./js/form.js";
+import { initThread } from "./js/thread.js";
 import { applySiteConfig } from "./js/social.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,6 +60,7 @@ async function boot() {
   initServices(reduced);
   initProcess(reduced);
   initScrollUI();
+  initThread();
   initHeroParallax(reduced);
 
   ScrollTrigger.refresh();

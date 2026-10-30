@@ -22,7 +22,7 @@ export function initVideos() {
 
   // Los videos silenciosos suelen reproducirse solos; reforzamos el intento
   // en el primer gesto del usuario por si el navegador los bloquea.
-  const ambient = [...document.querySelectorAll(".hero__video, .phone__video")];
+  const ambient = [...document.querySelectorAll(".phone__video")];
 
   const tryPlay = () => {
     ambient.forEach((v) => v.play().catch(() => {}));

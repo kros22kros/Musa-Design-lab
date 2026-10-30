@@ -27,7 +27,7 @@
 
   <link rel="icon" type="image/png" href="/media/brand/favicon.png" />
   <link rel="apple-touch-icon" href="/media/brand/favicon.png" />
-  <link rel="preload" as="image" href="/media/hero-poster.jpg" />
+  <link rel="preload" as="image" href="/media/brand/logo-horizontal-light.png" />
 
   <script>
     document.documentElement.classList.remove("no-js");
@@ -85,8 +85,21 @@
     <span class="cursor__ring"><span class="cursor__label"></span></span>
   </div>
 
-  <!-- Progreso de lectura -->
-  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <!-- Hilo de luz: acompaña el scroll y conecta todas las secciones -->
+  <div class="thread" aria-hidden="true">
+    <svg class="thread__svg" viewBox="0 0 120 1000" preserveAspectRatio="none" focusable="false">
+      <defs>
+        <linearGradient id="thread-gradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d3d9e7" />
+          <stop offset="52%" stop-color="#c08a84" />
+          <stop offset="100%" stop-color="#8aa9c5" />
+        </linearGradient>
+      </defs>
+      <path class="thread__base" d="M58 8C34 120 82 230 58 350C34 470 82 590 58 710C34 830 82 920 58 992" pathLength="1000" />
+      <path class="thread__trace" d="M58 8C34 120 82 230 58 350C34 470 82 590 58 710C34 830 82 920 58 992" pathLength="1000" />
+    </svg>
+    <span class="thread__spark"></span>
+  </div>
 
   <!-- Preloader -->
   <div class="preloader" id="preloader" aria-hidden="true">
@@ -95,7 +108,7 @@
         <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 1.5c.7 12 9.8 21.1 21.8 21.8C33.8 24 24.7 33.1 24 45.1 23.3 33.1 14.2 24 2.2 23.3 14.2 22.6 23.3 13.5 24 1.5Z"/></svg>
       </div>
       <div class="preloader__word">
-        <img src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
+        <img src="/media/brand/logo-stacked-light.png" alt="" width="481" height="332" />
       </div>
       <div class="preloader__meta">
         <span>Inspiración que convierte ideas en posibilidades</span>
@@ -108,8 +121,8 @@
   <!-- Navegación -->
   <header class="nav" id="nav">
     <a class="nav__brand" href="#inicio" aria-label="MUSA Design Lab, ir al inicio">
-      <img class="nav__logo nav__logo--light" src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
-      <img class="nav__logo nav__logo--dark" src="/media/brand/logo-stacked-dark.png" alt="" width="482" height="334" />
+      <img class="nav__logo nav__logo--light" src="/media/brand/logo-horizontal-light.png" alt="" width="698" height="202" />
+      <img class="nav__logo nav__logo--dark" src="/media/brand/logo-horizontal-dark.png" alt="" width="698" height="202" />
     </a>
 
     <nav class="nav__links" aria-label="Navegación principal">
@@ -160,9 +173,6 @@
     <!-- ============================== HERO ============================== -->
     <section class="hero" id="inicio">
       <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline poster="/media/hero-poster.jpg" aria-hidden="true" tabindex="-1">
-          <source src="/media/hero.mp4" type="video/mp4" />
-        </video>
         <div class="hero__veil"></div>
         <div class="hero__halo"></div>
       </div>
@@ -286,8 +296,8 @@
       <div class="meaning__top">
         <p class="label label--light" data-reveal><span>02</span> El nombre</p>
         <div class="meaning__word" aria-hidden="true" data-reveal>
-          <span>MUSA</span>
-          <img src="/media/brand/logo-script-light.png" alt="" width="386" height="109" />
+          <img class="meaning__mark" src="/media/brand/wordmark-light.png" alt="" width="465" height="194" />
+          <img class="meaning__script" src="/media/brand/logo-script-light.png" alt="" width="382" height="108" />
         </div>
       </div>
 
@@ -841,8 +851,8 @@
 
       <!-- Showreel -->
       <div class="showreel" data-showreel>
-        <video class="showreel__video" poster="/media/showreel-poster.jpg" preload="none" playsinline>
-          <source src="/media/showreel.mp4" type="video/mp4" />
+        <video class="showreel__video" poster="/media/musa-showreel-poster.jpg" preload="none" playsinline>
+          <source src="/media/musa-showreel.mp4" type="video/mp4" />
         </video>
         <div class="showreel__overlay">
           <span class="showreel__label">Showreel — 2026</span>
@@ -850,7 +860,7 @@
             <span class="showreel__play-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg>
             </span>
-            <span class="showreel__play-text">Ver showreel <small>00:16</small></span>
+            <span class="showreel__play-text">Ver showreel <small>00:08</small></span>
           </button>
           <p class="showreel__caption">Un recorrido por nuestro universo visual.</p>
         </div>
@@ -884,8 +894,8 @@
         <div class="phone" data-phone>
           <div class="phone__frame">
             <div class="phone__notch" aria-hidden="true"></div>
-            <video class="phone__video" autoplay muted loop playsinline poster="/media/reel-poster.jpg" aria-label="Reel de marca de MUSA Design Lab">
-              <source src="/media/reel.mp4" type="video/mp4" />
+            <video class="phone__video" autoplay muted loop playsinline poster="/media/musa-reel-poster.jpg" aria-label="Reel de marca de MUSA Design Lab">
+              <source src="/media/musa-reel.mp4" type="video/mp4" />
             </video>
           </div>
           <span class="phone__glow" aria-hidden="true"></span>
@@ -1114,7 +1124,7 @@
   <footer class="footer">
     <div class="footer__top">
       <a class="footer__brand" href="#inicio" aria-label="MUSA Design Lab, ir al inicio">
-        <img src="/media/brand/logo-stacked-light.png" alt="" width="482" height="334" />
+        <img src="/media/brand/logo-stacked-light.png" alt="" width="481" height="332" />
       </a>
       <nav class="footer__nav" aria-label="Navegación del pie">
         <a href="#estudio">Estudio</a>

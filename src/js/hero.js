@@ -53,18 +53,6 @@ export function initHeroParallax(reduced = false) {
   const hero = document.querySelector(".hero");
   if (!hero || reduced) return;
 
-  gsap.to(".hero__video", {
-    yPercent: 12,
-    scale: 1.14,
-    ease: "none",
-    scrollTrigger: {
-      trigger: hero,
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-
   gsap.to(".hero__inner", {
     yPercent: -6,
     opacity: 0.35,

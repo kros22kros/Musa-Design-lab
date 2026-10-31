@@ -1,10 +1,10 @@
 """
 MUSA - Generador de universo visual
 ====================================
-Crea, sin bancos de imágenes ni licencias externas, todas las piezas
-visuales del sitio: arte editorial, retratos abstractos del equipo,
-texturas e imágenes Open Graph. Los videos se derivan aparte con
-`tools/prepare_video.py`.
+Crea, sin bancos de imágenes ni licencias externas, las piezas
+visuales del sitio: arte editorial, texturas e imágenes Open Graph.
+Los retratos del equipo y los videos se preparan aparte con
+`tools/prepare_team.py` y `tools/prepare_video.py`.
 
 Uso:
     python tools/generate_assets.py
@@ -755,12 +755,6 @@ def main():
         img.save(MEDIA / name, quality=90, optimize=True)
         img.save(MEDIA / name.replace(".jpg", ".webp"), quality=86, method=6)
         print("   ", name)
-
-    print("→ Generando retratos abstractos del equipo...")
-    team_card("Isabella Corredor", "IC", WINE, 71, MEDIA / "team-isabella.jpg")
-    team_card("Emilia Macias", "EM", CLAY, 72, MEDIA / "team-emilia.jpg")
-    team_card("Elizabeth Román", "ER", (78, 95, 121), 73, MEDIA / "team-elizabeth.jpg")
-    print("    equipo listo")
 
     print("→ Generando imagen Open Graph y textura...")
     og_image(OUT / "og-image.jpg")

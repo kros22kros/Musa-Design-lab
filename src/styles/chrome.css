@@ -116,14 +116,14 @@ html.is-ready .thread {
 .nav__brand {
   position: relative;
   display: block;
-  width: clamp(150px, 14.5vw, 210px);
+  width: clamp(134px, 13vw, 188px);
   aspect-ratio: 698 / 202;
   flex-shrink: 0;
   transition: width 0.5s var(--ease);
 }
 
 .nav.is-scrolled .nav__brand {
-  width: clamp(132px, 12vw, 180px);
+  width: clamp(118px, 10.8vw, 160px);
 }
 
 .nav__logo {
@@ -594,11 +594,11 @@ html.is-ready .thread {
   }
 
   .nav__brand {
-    width: 156px;
+    width: 140px;
   }
 
   .nav.is-scrolled .nav__brand {
-    width: 136px;
+    width: 122px;
   }
 
   .lightbox {

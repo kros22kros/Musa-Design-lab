@@ -60,7 +60,9 @@ MUSA-Web/
 │     └─ responsive.css     # Ajustes por breakpoint
 └─ tools/
    ├─ prepare_brand.py      # Extrae el logotipo original y arma los lockups
-   ├─ generate_assets.py    # Generador reproducible de todo el media
+   ├─ prepare_team.py       # Recorta los retratos reales del equipo a 4:5
+   ├─ prepare_video.py      # Deriva el showreel y el reel desde el video de marca
+   ├─ generate_assets.py    # Piezas editoriales, texturas e imagen Open Graph
    └─ source/               # JPEG originales de marca, paleta y paquetes
 ```
 
@@ -165,22 +167,29 @@ Cuando exista el dominio definitivo, actualizar:
 
 ## Universo visual
 
-Las piezas editoriales, placas y texturas son originales y se generan por código,
-sin bancos de imágenes ni licencias externas. El showreel y el reel vertical se
-derivan del video de marca del estudio:
+Las piezas editoriales y texturas son originales y se generan por código, sin
+bancos de imágenes ni licencias externas. Los retratos del equipo son fotografías
+reales de las integrantes, y el showreel y el reel vertical se derivan del video
+de marca del estudio:
 
 - 6 piezas editoriales del portafolio (1200×1500) en `.jpg` y `.webp`.
-- 3 placas abstractas del equipo (1000×1250) en `.jpg` y `.webp`, con el
-  logotipo real.
+- 3 retratos del equipo (1000×1250) en `.jpg` y `.webp`, recortados a 4:5 desde
+  las fotos originales.
 - `musa-showreel.mp4` (8 s, 16:9, con audio) y `musa-reel.mp4` (8 s, 9:16,
   silencioso) con sus posters, derivados de `VIDEO DE MUSA.mp4`.
 - `og-image.jpg` (1200×630) con el logotipo, `grain.png` y el favicon de marca.
 
-Para regenerar las piezas y placas:
+Para regenerar las piezas editoriales y texturas:
 
 ```bash
 pip install pillow numpy imageio-ffmpeg
 python tools/generate_assets.py
+```
+
+Los retratos se recortan al formato de las tarjetas del equipo:
+
+```bash
+python tools/prepare_team.py
 ```
 
 Los videos del sitio se derivan del video de marca original:
@@ -189,10 +198,9 @@ Los videos del sitio se derivan del video de marca original:
 python tools/prepare_video.py
 ```
 
-Ambos scripts usan las fuentes de `tools/fonts/` y el `ffmpeg` incluido en
-`imageio-ffmpeg`. Conviene ejecutar `tools/prepare_brand.py` antes, porque las
-placas del equipo y la imagen Open Graph usan los lockups de
-`public/media/brand/`.
+Los scripts de imágenes usan las fuentes de `tools/fonts/` y el `ffmpeg`
+incluido en `imageio-ffmpeg`. Conviene ejecutar `tools/prepare_brand.py` antes,
+porque la imagen Open Graph usa los lockups de `public/media/brand/`.
 
 ---
 

@@ -243,6 +243,8 @@ vercel --prod   # producción
 - Formulario con `label` asociados, validación nativa y mensajes de estado.
 - Respeta `prefers-reduced-motion`: sin preloader, sin animaciones y contenido
   siempre visible.
+- El fondo del hero se anima solo con `transform` y `opacity` (brillos de color
+  y un reflejo de luz) y se pausa cuando el hero sale de pantalla.
 - Imágenes con `width`/`height` o `aspect-ratio`, `loading="lazy"` y `<picture>`
   con WebP. Tipografía Georgia del sistema, sin descargas de fuentes.
 - El preloader tiene un failsafe de 7 s para pestañas en segundo plano.

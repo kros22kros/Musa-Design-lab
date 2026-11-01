@@ -19,10 +19,70 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background:
-    radial-gradient(56% 52% at 76% 26%, rgba(128, 35, 30, 0.36), transparent 72%),
-    radial-gradient(50% 46% at 10% 84%, rgba(23, 37, 58, 0.5), transparent 72%),
-    radial-gradient(110% 90% at 50% 45%, #151213 0%, #0c0b0b 68%);
+  background: radial-gradient(110% 90% at 50% 45%, #151213 0%, #0c0b0b 68%);
+}
+
+/* Brillos de color que respiran muy despacio detrás del contenido. */
+.hero__glow {
+  position: absolute;
+  width: min(92vw, 1100px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+}
+
+.hero__glow--wine {
+  top: -22%;
+  right: -14%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(128, 35, 30, 0.44),
+    rgba(128, 35, 30, 0.16) 42%,
+    transparent 68%
+  );
+  animation: hero-glow-wine 26s ease-in-out infinite alternate;
+}
+
+.hero__glow--blue {
+  bottom: -30%;
+  left: -16%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(30, 52, 84, 0.6),
+    rgba(23, 37, 58, 0.24) 44%,
+    transparent 70%
+  );
+  animation: hero-glow-blue 34s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow-wine {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-7%, 6%, 0) scale(1.14);
+    opacity: 0.88;
+  }
+}
+
+@keyframes hero-glow-blue {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.06);
+    opacity: 0.9;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(6%, -5%, 0) scale(1);
+    opacity: 0.82;
+  }
 }
 
 .hero__media::after {
@@ -32,9 +92,22 @@
   background: linear-gradient(
     115deg,
     transparent 30%,
-    rgba(211, 217, 231, 0.045) 49%,
+    rgba(211, 217, 231, 0.06) 49%,
     transparent 52%
   );
+  animation: hero-sheen 19s ease-in-out infinite;
+}
+
+@keyframes hero-sheen {
+  0%,
+  100% {
+    transform: translate3d(-16%, 0, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(16%, 0, 0);
+    opacity: 1;
+  }
 }
 
 .hero__veil {
@@ -81,10 +154,21 @@
 
 .hero__halo::before {
   inset: 9%;
+  animation: hero-halo 15s ease-in-out infinite alternate;
 }
 
 .hero__halo::after {
   inset: 26%;
+  animation: hero-halo 21s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes hero-halo {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .hero__inner {
@@ -236,6 +320,28 @@
   100% {
     transform: translateY(200%);
   }
+}
+
+/* Con movimiento reducido, el fondo vuelve a su estado quieto. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__glow,
+  .hero__media::after,
+  .hero__halo::before,
+  .hero__halo::after {
+    animation: none;
+  }
+
+  .hero__glow {
+    opacity: 0.86;
+  }
+}
+
+/* Fuera de pantalla el fondo no consume animación. */
+.hero.is-idle .hero__glow,
+.hero.is-idle .hero__media::after,
+.hero.is-idle .hero__halo::before,
+.hero.is-idle .hero__halo::after {
+  animation-play-state: paused;
 }
 
 /* ============================== MARQUEE ============================== */

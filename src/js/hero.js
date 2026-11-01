@@ -48,6 +48,21 @@ export function createHeroIntro(reduced = false) {
   return tl;
 }
 
+/** Pausa la animación ambiental del hero cuando deja de verse. */
+export function initHeroAmbience(reduced = false) {
+  const hero = document.querySelector(".hero");
+  if (!hero || reduced || !("IntersectionObserver" in window)) return;
+
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      hero.classList.toggle("is-idle", !entry.isIntersecting);
+    },
+    { rootMargin: "10%" }
+  );
+
+  io.observe(hero);
+}
+
 /** Parallax del video y del contenido del hero al hacer scroll. */
 export function initHeroParallax(reduced = false) {
   const hero = document.querySelector(".hero");

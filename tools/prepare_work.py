@@ -1,11 +1,14 @@
 """
 Prepara las imágenes reales de MUSA para el sitio.
 
-Entrada : Documentos/MUSA.jpeg y Documentos/1..7.jpeg
+Entrada : Documentos/MUSA.jpeg y Documentos/1..7.jpeg (si siguen ahí)
 Salida  : public/media/estudio-musa.jpg|webp      (sección 01, Estudio)
           public/media/work-01..07.jpg|webp       (portafolio Universo visual)
 
 No recorta las piezas: conserva su proporción original para no cortar texto.
+Si un original ya no está en Documentos, se conserva la versión procesada.
+Las tarjetas flotantes de la entrada se generan aparte, con
+prepare_hero_cards.py, a partir de estas piezas.
 """
 from pathlib import Path
 
@@ -33,16 +36,18 @@ def save(img: Image.Image, slug: str, max_width: int, jpg_q: int, webp_q: int):
 
 def main():
     estudio = SRC / "MUSA.jpeg"
-    if not estudio.exists():
-        raise SystemExit(f"No se encontró la imagen: {estudio}")
-    save(Image.open(estudio).convert("RGB"), "estudio-musa", 1080, 90, 84)
+    if estudio.exists():
+        save(Image.open(estudio).convert("RGB"), "estudio-musa", 1080, 90, 84)
+    else:
+        print("· estudio-musa: sin original en Documentos, se conserva el actual")
 
     for number in range(1, 8):
-        filename = f"{number}.jpeg"
-        src = SRC / filename
-        if not src.exists():
-            raise SystemExit(f"No se encontró la pieza: {src}")
-        save(Image.open(src).convert("RGB"), f"work-0{number}", 900, 86, 80)
+        src = SRC / f"{number}.jpeg"
+        if src.exists():
+            piece = Image.open(src).convert("RGB")
+            save(piece, f"work-0{number}", 900, 86, 80)
+        else:
+            print(f"· work-0{number}: sin original en Documentos, se conserva el actual")
 
 
 if __name__ == "__main__":

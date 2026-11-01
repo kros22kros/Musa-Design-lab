@@ -171,6 +171,270 @@
   }
 }
 
+/* ---- Escena del hero: piezas flotando, seda y partículas ---- */
+.hero__scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: 1500px;
+  perspective-origin: 70% 42%;
+}
+
+/* Cintas de luz que recorren la escena */
+.hero__silk {
+  position: absolute;
+  left: -6%;
+  width: 112%;
+  height: clamp(180px, 24vw, 360px);
+  border-radius: 50%;
+  opacity: 0.55;
+  will-change: transform, opacity;
+}
+
+.hero__silk--wine {
+  top: 16%;
+  background: radial-gradient(
+    52% 50% at 50% 50%,
+    rgba(128, 35, 30, 0.55),
+    rgba(128, 35, 30, 0.18) 48%,
+    transparent 76%
+  );
+  transform: rotate(-13deg);
+  animation: hero-silk-wine 30s ease-in-out infinite alternate;
+}
+
+.hero__silk--bone {
+  top: 46%;
+  height: clamp(140px, 18vw, 260px);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(211, 217, 231, 0.24),
+    rgba(211, 217, 231, 0.08) 46%,
+    transparent 74%
+  );
+  transform: rotate(8deg);
+  animation: hero-silk-bone 38s ease-in-out infinite alternate;
+}
+
+@keyframes hero-silk-wine {
+  from {
+    transform: translate3d(-3%, -2%, 0) rotate(-13deg) scaleX(1);
+    opacity: 0.45;
+  }
+  to {
+    transform: translate3d(4%, 3%, 0) rotate(-6deg) scaleX(1.12);
+    opacity: 0.75;
+  }
+}
+
+@keyframes hero-silk-bone {
+  from {
+    transform: translate3d(3%, 2%, 0) rotate(8deg) scaleX(1.06);
+    opacity: 0.35;
+  }
+  to {
+    transform: translate3d(-4%, -3%, 0) rotate(2deg) scaleX(0.98);
+    opacity: 0.6;
+  }
+}
+
+/* Tarjetas con las piezas reales del estudio */
+.hero__cards {
+  position: absolute;
+  top: 43%;
+  right: clamp(1rem, 3vw, 4rem);
+  width: clamp(300px, 30vw, 470px);
+  height: clamp(430px, 62vh, 620px);
+  translate: 0 -50%;
+  transform-style: preserve-3d;
+}
+
+.hero__cards-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: hero-breathe 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-breathe {
+  from {
+    transform: rotateX(0deg) rotateY(-1.4deg) scale(1);
+  }
+  to {
+    transform: rotateX(1deg) rotateY(1.4deg) scale(1.03);
+  }
+}
+
+.hero__card {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+
+html.is-ready .hero__card {
+  opacity: 1;
+}
+
+html.is-ready .hero__card--b {
+  transition-delay: 0.18s;
+}
+
+html.is-ready .hero__card--a {
+  transition-delay: 0.32s;
+}
+
+.hero__card--brand {
+  left: 46%;
+  top: 10%;
+  width: 46%;
+  z-index: 2;
+  filter: brightness(0.84);
+  transform: translate3d(calc(var(--mx, 0) * 22px), calc(var(--my, 0) * 16px), 0)
+    rotateY(13deg) rotateX(-3deg) rotateZ(1.5deg);
+}
+
+.hero__card--a {
+  left: 6%;
+  top: 3%;
+  width: 50%;
+  z-index: 3;
+  transform: translate3d(calc(var(--mx, 0) * 30px), calc(var(--my, 0) * 20px), 0)
+    rotateY(-15deg) rotateX(5deg) rotateZ(-3deg);
+}
+
+.hero__card--b {
+  left: 34%;
+  top: 55%;
+  width: 38%;
+  z-index: 1;
+  transform: translate3d(calc(var(--mx, 0) * 12px), calc(var(--my, 0) * 9px), 0)
+    rotateY(9deg) rotateX(-5deg) rotateZ(4deg);
+}
+
+.hero__card-body {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid rgba(236, 233, 220, 0.2);
+  background: var(--ink-2);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.95),
+    inset 0 0 0 1px rgba(12, 11, 11, 0.45);
+  animation: hero-float 13s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Reflejo que recorre cada tarjeta */
+.hero__card-body::after {
+  content: "";
+  position: absolute;
+  inset: -30% -70%;
+  background: linear-gradient(
+    104deg,
+    transparent 40%,
+    rgba(236, 233, 220, 0.22) 49%,
+    rgba(236, 233, 220, 0.05) 54%,
+    transparent 62%
+  );
+  transform: translateX(-70%);
+  animation: hero-glare 11s ease-in-out infinite;
+}
+
+.hero__card--brand .hero__card-body::after {
+  animation-duration: 14s;
+  animation-delay: -5s;
+}
+
+.hero__card--b .hero__card-body::after {
+  animation-duration: 17s;
+  animation-delay: -11s;
+}
+
+@keyframes hero-glare {
+  0%,
+  62% {
+    transform: translateX(-70%);
+    opacity: 0;
+  }
+  72% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(70%);
+    opacity: 0.2;
+  }
+}
+
+.hero__card--brand .hero__card-body {
+  animation-duration: 15s;
+  animation-delay: -3s;
+}
+
+.hero__card--b .hero__card-body {
+  animation-duration: 19s;
+  animation-delay: -8s;
+}
+
+.hero__card-body img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes hero-float {
+  from {
+    transform: translate3d(0, -9px, 0) rotate(-0.5deg);
+  }
+  to {
+    transform: translate3d(0, 11px, 0) rotate(0.5deg);
+  }
+}
+
+/* Polvo de luz flotando */
+.hero__dust span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: rgba(236, 233, 220, 0.85);
+  box-shadow: 0 0 12px rgba(236, 233, 220, 0.5);
+  opacity: 0;
+  animation: hero-dust var(--d) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.hero__dust-star {
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  font-size: var(--s);
+  line-height: 1;
+  color: rgba(211, 217, 231, 0.72);
+  text-shadow: 0 0 14px rgba(211, 217, 231, 0.45);
+}
+
+@keyframes hero-dust {
+  0% {
+    transform: translate3d(0, 30px, 0) scale(0.6);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.6;
+  }
+  78% {
+    opacity: 0.32;
+  }
+  100% {
+    transform: translate3d(var(--dx), -190px, 0) scale(1);
+    opacity: 0;
+  }
+}
+
 .hero__inner {
   position: relative;
   z-index: 2;
@@ -327,12 +591,19 @@
   .hero__glow,
   .hero__media::after,
   .hero__halo::before,
-  .hero__halo::after {
+  .hero__halo::after,
+  .hero__silk,
+  .hero__card-body,
+  .hero__dust span {
     animation: none;
   }
 
   .hero__glow {
     opacity: 0.86;
+  }
+
+  .hero__dust span {
+    opacity: 0.3;
   }
 }
 
@@ -340,7 +611,10 @@
 .hero.is-idle .hero__glow,
 .hero.is-idle .hero__media::after,
 .hero.is-idle .hero__halo::before,
-.hero.is-idle .hero__halo::after {
+.hero.is-idle .hero__halo::after,
+.hero.is-idle .hero__silk,
+.hero.is-idle .hero__card-body,
+.hero.is-idle .hero__dust span {
   animation-play-state: paused;
 }
 

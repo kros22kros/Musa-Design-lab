@@ -40,7 +40,7 @@ MUSA-Web/
 │  ├─ js/
 │  │  ├─ smooth.js          # Lenis + anclas internas
 │  │  ├─ preloader.js       # Cortina de entrada (con failsafe)
-│  │  ├─ hero.js            # Intro y parallax del hero
+│  │  ├─ hero.js            # Intro, escena y parallax del hero
 │  │  ├─ reveals.js         # Reveals, split headings, contadores, nav activa
 │  │  ├─ services.js        # Carrusel horizontal con pin
 │  │  ├─ process.js         # Progreso de pasos
@@ -62,6 +62,7 @@ MUSA-Web/
    ├─ prepare_brand.py      # Extrae el logotipo original y arma los lockups
    ├─ prepare_team.py       # Recorta los retratos reales del equipo a 4:5
    ├─ prepare_work.py       # Piezas reales del portafolio y del Estudio
+   ├─ prepare_hero_cards.py # Tarjetas 4:5 que flotan en la entrada
    ├─ prepare_video.py      # Deriva el showreel y el reel desde el video de marca
    ├─ generate_assets.py    # Piezas editoriales, texturas e imagen Open Graph
    └─ source/               # JPEG originales de marca, paleta y paquetes
@@ -212,6 +213,35 @@ Los scripts de imágenes usan las fuentes de `tools/fonts/` y el `ffmpeg`
 incluido en `imageio-ffmpeg`. Conviene ejecutar `tools/prepare_brand.py` antes,
 porque la imagen Open Graph usa los lockups de `public/media/brand/`.
 
+`prepare_work.py` conserva las piezas que ya existen si el original ya no está
+en Documentos; las tarjetas de la entrada salen de esas piezas procesadas:
+
+```bash
+python tools/prepare_hero_cards.py
+```
+
+---
+
+## Entrada cinematográfica
+
+El hero tiene tres capas de movimiento, todas con imágenes propias de MUSA
+(retrato, blazer y lockup de marca), sin video y sin café:
+
+- **Escena flotante**: tres tarjetas 4:5 en `hero-card-a|brand|b` con
+  profundidad, inclinación, flotación lenta, un reflejo que las recorre y un
+  leve «respiro» del conjunto. Se derivan de `work-07`, `estudio-musa` y
+  `work-01` con `tools/prepare_hero_cards.py`.
+- **Luz**: dos cintas de seda (`hero-silk`), brillos de color (`hero__glow`) y
+  un barrido de luz sobre el fondo.
+- **Partículas**: polvo y destellos (`hero__dust`) que suben a distintas
+  velocidades.
+
+Con puntero fino hay parallax 3D (`initHeroDepth`), el conjunto se mueve con el
+scroll (GSAP) y todo se pausa cuando el hero sale de pantalla (`is-idle`) o
+cuando el sistema pide `prefers-reduced-motion`. En tablet vertical quedan dos
+tarjetas y en móvil la escena se apoya solo en luz, seda y partículas para no
+competir con el titular.
+
 ---
 
 ## Despliegue en Vercel
@@ -243,8 +273,9 @@ vercel --prod   # producción
 - Formulario con `label` asociados, validación nativa y mensajes de estado.
 - Respeta `prefers-reduced-motion`: sin preloader, sin animaciones y contenido
   siempre visible.
-- El fondo del hero se anima solo con `transform` y `opacity` (brillos de color
-  y un reflejo de luz) y se pausa cuando el hero sale de pantalla.
+- El fondo y la escena del hero se animan solo con `transform` y `opacity`
+  (brillos, seda, tarjetas flotantes y partículas) y se pausan cuando el hero
+  sale de pantalla.
 - Imágenes con `width`/`height` o `aspect-ratio`, `loading="lazy"` y `<picture>`
   con WebP. Tipografía Georgia del sistema, sin descargas de fuentes.
 - El preloader tiene un failsafe de 7 s para pestañas en segundo plano.

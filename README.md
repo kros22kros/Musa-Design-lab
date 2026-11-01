@@ -61,6 +61,7 @@ MUSA-Web/
 └─ tools/
    ├─ prepare_brand.py      # Extrae el logotipo original y arma los lockups
    ├─ prepare_team.py       # Recorta los retratos reales del equipo a 4:5
+   ├─ prepare_work.py       # Piezas reales del portafolio y del Estudio
    ├─ prepare_video.py      # Deriva el showreel y el reel desde el video de marca
    ├─ generate_assets.py    # Piezas editoriales, texturas e imagen Open Graph
    └─ source/               # JPEG originales de marca, paleta y paquetes
@@ -167,12 +168,14 @@ Cuando exista el dominio definitivo, actualizar:
 
 ## Universo visual
 
-Las piezas editoriales y texturas son originales y se generan por código, sin
-bancos de imágenes ni licencias externas. Los retratos del equipo son fotografías
-reales de las integrantes, y el showreel y el reel vertical se derivan del video
-de marca del estudio:
+Las piezas editoriales de apoyo y las texturas son originales y se generan por
+código, sin bancos de imágenes ni licencias externas. El portafolio, la imagen del
+Estudio y los retratos del equipo son piezas y fotografías reales del estudio; el
+showreel y el reel vertical se derivan del video de marca:
 
-- 6 piezas editoriales del portafolio (1200×1500) en `.jpg` y `.webp`.
+- 7 piezas reales del portafolio (`work-01..07`) y la imagen del Estudio
+  (`estudio-musa`), en `.jpg` y `.webp`.
+- 6 piezas editoriales de apoyo para Servicios (1200×1500) en `.jpg` y `.webp`.
 - 3 retratos del equipo (1000×1250) en `.jpg` y `.webp`, recortados a 4:5 desde
   las fotos originales.
 - `musa-showreel.mp4` (8 s, 16:9, con audio) y `musa-reel.mp4` (8 s, 9:16,
@@ -184,6 +187,13 @@ Para regenerar las piezas editoriales y texturas:
 ```bash
 pip install pillow numpy imageio-ffmpeg
 python tools/generate_assets.py
+```
+
+Las piezas reales del portafolio y la imagen del Estudio se preparan desde los
+originales en Documentos:
+
+```bash
+python tools/prepare_work.py
 ```
 
 Los retratos se recortan al formato de las tarjetas del equipo:
@@ -241,9 +251,9 @@ vercel --prod   # producción
 
 ## Portafolio
 
-Las piezas de la sección «Universo visual» son **trabajos conceptuales** creados
-para explorar la identidad de MUSA Design Lab, no proyectos de clientes. El sitio
-lo indica explícitamente para evitar atribuciones falsas.
+Las piezas de la sección «Universo visual» son **trabajos reales de MUSA Design
+Lab** para sus redes y campañas: contenido, diseño editorial e identidad. No se
+presentan como proyectos de clientes; el texto de la sección lo aclara.
 
 ---
 

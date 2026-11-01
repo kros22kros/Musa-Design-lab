@@ -178,6 +178,8 @@
 
   .team {
     grid-template-columns: 1fr 1fr;
+    max-width: 820px;
+    margin-inline: auto;
   }
 
   .team__card:nth-child(2) {

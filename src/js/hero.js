@@ -63,42 +63,6 @@ export function initHeroAmbience(reduced = false) {
   io.observe(hero);
 }
 
-/**
- * Profundidad con el puntero: las tarjetas flotantes se desplazan a
- * distintas velocidades según su capa. Solo con mouse o trackpad.
- */
-export function initHeroDepth(reduced = false) {
-  const hero = document.querySelector(".hero");
-  if (!hero || reduced) return;
-  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-  const target = { x: 0, y: 0 };
-  const current = { x: 0, y: 0 };
-  let frame = 0;
-
-  const tick = () => {
-    current.x += (target.x - current.x) * 0.055;
-    current.y += (target.y - current.y) * 0.055;
-
-    hero.style.setProperty("--mx", current.x.toFixed(4));
-    hero.style.setProperty("--my", current.y.toFixed(4));
-
-    const pending =
-      Math.abs(target.x - current.x) + Math.abs(target.y - current.y) > 0.0008;
-    frame = pending ? requestAnimationFrame(tick) : 0;
-  };
-
-  const onMove = (event) => {
-    target.x = (event.clientX / window.innerWidth - 0.5) * 2;
-    target.y = (event.clientY / window.innerHeight - 0.5) * 2;
-    if (!frame) frame = requestAnimationFrame(tick);
-  };
-
-  hero.style.setProperty("--mx", "0");
-  hero.style.setProperty("--my", "0");
-  window.addEventListener("pointermove", onMove, { passive: true });
-}
-
 /** Parallax del video y del contenido del hero al hacer scroll. */
 export function initHeroParallax(reduced = false) {
   const hero = document.querySelector(".hero");
@@ -119,18 +83,6 @@ export function initHeroParallax(reduced = false) {
   gsap.to(".hero__halo", {
     rotate: 40,
     yPercent: 8,
-    ease: "none",
-    scrollTrigger: {
-      trigger: hero,
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-
-  gsap.to(".hero__cards", {
-    y: -70,
-    opacity: 0.35,
     ease: "none",
     scrollTrigger: {
       trigger: hero,

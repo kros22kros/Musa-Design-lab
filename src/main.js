@@ -9,12 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { createSmoothScroll, bindAnchors } from "./js/smooth.js";
 import { playPreloader } from "./js/preloader.js";
-import {
-  createHeroIntro,
-  initHeroParallax,
-  initHeroAmbience,
-  initHeroDepth,
-} from "./js/hero.js";
+import { createHeroIntro, initHeroParallax, initHeroAmbience } from "./js/hero.js";
 import { initReveals, initScrollUI } from "./js/reveals.js";
 import { initServices } from "./js/services.js";
 import { initProcess } from "./js/process.js";
@@ -68,7 +63,6 @@ async function boot() {
   initThread();
   initHeroParallax(reduced);
   initHeroAmbience(reduced);
-  initHeroDepth(reduced);
 
   ScrollTrigger.refresh();
 

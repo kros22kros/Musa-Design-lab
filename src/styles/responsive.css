@@ -213,16 +213,6 @@
     width: 62vw;
   }
 
-  /* En vertical solo quedan dos piezas: la tercera chocaría con el titular. */
-  .hero__card--b {
-    display: none;
-  }
-
-  .hero__cards {
-    top: 52%;
-    width: clamp(260px, 34vw, 380px);
-  }
-
   .meaning__mark {
     width: clamp(200px, 52vw, 280px);
   }
@@ -252,11 +242,6 @@
   .hero__title {
     font-size: clamp(2.9rem, 11.5vw, 4.6rem);
     line-height: 0.92;
-  }
-
-  /* En móvil el titular manda: la escena queda en luz, seda y partículas. */
-  .hero__cards {
-    display: none;
   }
 
   .hero__title .line:nth-child(2),
